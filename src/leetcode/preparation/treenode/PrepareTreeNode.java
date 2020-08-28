@@ -11,7 +11,7 @@ public class PrepareTreeNode {
         if (index < array.length) {
             Integer integer;
             if ((integer = array[index]) != null) {
-                TreeNode node = new TreeNode(integer);
+                TreeNode node = new TreeNode(array[index]);
                 node.left = createBinaryTreeByArray(array, 2 * index + 1);
                 node.right = createBinaryTreeByArray(array, 2 * index + 2);
                 return node;
