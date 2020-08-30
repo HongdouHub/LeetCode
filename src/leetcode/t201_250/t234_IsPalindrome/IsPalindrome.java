@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static leetcode.preparation.linkednode.PrepareListNode.generate;
+import static leetcode.preparation.linkednode.PrepareListNode.reverseList;
 
 /**
  * 234. 回文链表
@@ -20,6 +21,9 @@ public class IsPalindrome {
     public static void main(String[] args) {
         System.out.println(isPalindrome1(generate(new Integer[] {1, 2, 2, 1})));
         System.out.println(isPalindrome2(generate(new Integer[] {1, 2, 2, 1})));
+
+        System.out.println(isPalindrome1(generate(new Integer[] {1, 2})));
+        System.out.println(isPalindrome2(generate(new Integer[] {1, 2})));
     }
 
     /**
@@ -80,21 +84,6 @@ public class IsPalindrome {
         firstHalfEnd.next = reverseList(secondHalfStart);
 
         return result;
-    }
-
-    private static ListNode reverseList(ListNode head) {
-        ListNode prev = null;
-        ListNode current = head;
-        ListNode temp;
-
-        while (current != null) {
-            temp = current.next;
-            current.next = prev;
-            prev = current;
-            current = temp;
-        }
-
-        return prev;
     }
 
     private static ListNode endOfFirstHalf(ListNode head) {

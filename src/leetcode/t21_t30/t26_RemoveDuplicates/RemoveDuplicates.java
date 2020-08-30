@@ -1,5 +1,9 @@
 package leetcode.t21_t30.t26_RemoveDuplicates;
 
+import utils.GsonUtil;
+
+import java.util.Arrays;
+
 /**
  * 26. 删除排序数组中的重复项
  *
@@ -14,7 +18,9 @@ package leetcode.t21_t30.t26_RemoveDuplicates;
 public class RemoveDuplicates {
 
     public static void main(String[] args) {
-        System.out.println(removeDuplicates(new int[]{1,1,2}));
+        int[] nums = new int[]{1,1,2};
+        System.out.println(removeDuplicates(nums));
+        System.out.println(GsonUtil.array2Json(Arrays.asList(nums)));
     }
 
     /**
@@ -28,14 +34,14 @@ public class RemoveDuplicates {
             return 0;
         }
 
-        int i = 0;
+        int length = 0;
         for (int j = 0; j < nums.length; j++) {
 
-            if (nums[i] != nums[j]) {
-                nums[i++] = nums[j];
+            if (nums[length] != nums[j]) {
+                nums[length++] = nums[j];
             }
         }
-        return i + 1;
+        return length + 1;
     }
 
 }

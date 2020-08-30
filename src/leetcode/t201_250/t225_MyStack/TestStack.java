@@ -2,6 +2,7 @@ package leetcode.t201_250.t225_MyStack;
 
 import leetcode.t201_250.t225_MyStack.single.MySingleStack;
 import leetcode.t201_250.t225_MyStack.single.MySingleStack2;
+import leetcode.t201_250.t225_MyStack.single.MySingleStack3;
 import leetcode.t201_250.t225_MyStack.twice.MyTwiceStack;
 import leetcode.t201_250.t225_MyStack.twice.MyTwiceStack2;
 
@@ -11,47 +12,32 @@ import leetcode.t201_250.t225_MyStack.twice.MyTwiceStack2;
 public class TestStack {
 
     public static void main(String[] args) {
-        test1();
-        test2();
+//        testStack(new MyTwiceStack<>());
+//        testStack(new MySingleStack<>());
+//
+//        testStack(new MyTwiceStack2<>());
+//        testStack(new MySingleStack2<>());
+
+        testStack1(new MySingleStack3<>());
     }
 
-    private static void test1() {
-        MyStack<Integer> twiceStack = new MyTwiceStack<>();
-        twiceStack.push(1);
-        twiceStack.push(2);
+    private static void testStack(MyStack<Integer> stack) {
+        stack.push(1);
+        stack.push(2);
 
-        System.out.println(twiceStack.pop());    // 返回 2
-        System.out.println(twiceStack.top());    // 返回 1
-        System.out.println(twiceStack.empty());  // 返回 false
-        System.out.println();
-
-        MyStack<Integer> singleStack = new MySingleStack<>();
-        singleStack.push(1);
-        singleStack.push(2);
-
-        System.out.println(singleStack.pop());    // 返回 2
-        System.out.println(singleStack.top());    // 返回 1
-        System.out.println(singleStack.empty());  // 返回 false
+        System.out.println(stack.pop());    // 返回 2
+        System.out.println(stack.top());    // 返回 1
+        System.out.println(stack.empty());  // 返回 false
         System.out.println();
     }
 
-    private static void test2() {
-        MyStack<Integer> twiceStack = new MyTwiceStack2<>();
-        twiceStack.push(1);
-        twiceStack.push(2);
+    private static void testStack1(MyStack<Integer> stack) {
+        stack.push(1);
+        stack.push(2);
 
-        System.out.println(twiceStack.pop());    // 返回 2
-        System.out.println(twiceStack.top());    // 返回 1
-        System.out.println(twiceStack.empty());  // 返回 false
-        System.out.println();
-
-        MyStack<Integer> singleStack = new MySingleStack2<>();
-        singleStack.push(1);
-        singleStack.push(2);
-
-        System.out.println(singleStack.pop());    // 返回 2
-        System.out.println(singleStack.top());    // 返回 1
-        System.out.println(singleStack.empty());  // 返回 false
+        System.out.println(stack.top());    // 返回 2
+        System.out.println(stack.pop());    // 返回 2
+        System.out.println(stack.empty());  // 返回 false
         System.out.println();
     }
 }

@@ -15,8 +15,11 @@ import java.util.Stack;
 public class Calculate {
 
     public static void main(String[] args) {
-//        System.out.println(calculate1("1 + 1"));              // 2
+        System.out.println(calculate1("1 + 1"));                // 2
+        System.out.println(calculate2("1 + 1"));                // 2
+
         System.out.println(calculate1("(1+(4+5+2)-3)+(6+8)"));  // 23
+        System.out.println(calculate2("(1+(4+5+2)-3)+(6+8)"));  // 23
     }
 
     /**
@@ -80,6 +83,75 @@ public class Calculate {
             }
         }
 
+        return result;
+    }
+
+    /**
+     * 通用解法
+     *
+     * 时间复杂度：O(N)
+     * 空间复杂度：O(N)
+     */
+    private static int calculate2(String s) {
+        return calculate2(s, new int[1]);
+    }
+
+    private static int calculate2(String s, int[] i) {
+        int length;
+        if (s == null || (length = s.length()) == 0) {
+            return 0;
+        }
+
+        Stack<Integer> stack = new Stack<Integer>();
+        int num = 0;
+        char sign = '+';
+
+        for (; i[0] < length; i[0]++) {
+            char c = s.charAt(i[0]);
+            boolean isDigit = Character.isDigit(c);
+
+            // 1. 先判断数字
+            if (isDigit) {
+                num = num * 10 + (c - '0');
+            }
+
+            // 2. 再判断小括号
+            if (c == '(') {
+                i[0]++;
+                num = calculate2(s, i);
+            }
+
+            // 3. 再判断操作符 + - * /
+            if (!isDigit && c != ' ' || i[0] == length - 1) {
+                switch (sign) {
+                    case '+':
+                        stack.push(num);
+                        break;
+                    case '-':
+                        stack.push(-num);
+                        break;
+                    default:
+                }
+
+                sign = c;
+                num = 0;
+            }
+
+            // 4. 最后再判断小括号退出循环
+            if (c == ')') {
+                break;
+            }
+        }
+
+        return sum(stack);
+    }
+
+    private static int sum(Stack<Integer> stack) {
+        int result = 0;
+
+        while (!stack.isEmpty()) {
+            result += stack.pop();
+        }
         return result;
     }
 

@@ -11,8 +11,8 @@ public class LengthOfLongestSubstring {
 
     public static void main(String[] args) {
         System.out.println(lengthOfLongestSubstring("abcabcbb")); // 3
-        System.out.println(lengthOfLongestSubstring("bbbbb")); // 1
-        System.out.println(lengthOfLongestSubstring("pwwkew")); // 3
+//        System.out.println(lengthOfLongestSubstring("bbbbb")); // 1
+//        System.out.println(lengthOfLongestSubstring("pwwkew")); // 3
     }
 
     private static int lengthOfLongestSubstring(String s) {
@@ -27,6 +27,7 @@ public class LengthOfLongestSubstring {
         Character c;
         for (int i = 0; i < size; i++) {
             c = s.charAt(i);
+
             if (map.containsKey(c)) {
                 leftIndex = Math.max(leftIndex, map.get(c) + 1);
             }
