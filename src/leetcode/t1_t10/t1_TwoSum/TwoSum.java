@@ -9,13 +9,26 @@ import java.util.Map;
 public class TwoSum {
 
     public static void main(String[] args) {
-        int[] nums;
+        int[] nums = new int[] {2, 2, 11, 15};
+        int target = 4;
+//        int[] nums = new int[] {2, 7, 11, 15};
+//        int target = 9;
 
-        nums = new int[] {2, 2, 11, 15};
-        print(nums, twoSum(nums, 4));
+        int[] result = twoSum(nums, target);
+        int[] resultValue = new int[result.length];
 
-        nums = new int[] {2, 7, 11, 15};
-        print(nums, twoSum(nums, 9));
+        for (int i = 0; i < nums.length; i++) {
+            if (result[0] == i) {
+                resultValue[0] = nums[i];
+                continue;
+            }
+            if (result[1] == i) {
+                resultValue[1] = nums[i];
+            }
+        }
+
+        System.out.println(GsonUtil.array2Json(Arrays.asList(result)));
+        System.out.println(GsonUtil.array2Json(Arrays.asList(resultValue)));
     }
 
     /**
@@ -49,22 +62,4 @@ public class TwoSum {
         throw new IllegalArgumentException("No two sum solution");
     }
 
-    private static void print(int[] nums, int[] result) {
-        System.out.print("序号:" + GsonUtil.array2Json(Arrays.asList(result)));
-        System.out.print(" -> ");
-        System.out.println("值:" + GsonUtil.array2Json(Arrays.asList(getValue(nums, result))));
-        System.out.println("------------------");
-    }
-
-    private static int[] getValue(int[] nums, int[] result) {
-        int[] value = new int[result.length];
-        int i = 0;
-        int j = 0;
-        for (; i < nums.length && j < result.length; i++) {
-            if (result[j] == i) {
-                value[j++] = nums[i];
-            }
-        }
-        return value;
-    }
 }

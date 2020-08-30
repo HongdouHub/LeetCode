@@ -17,6 +17,7 @@ public class StrStr {
     public static void main(String[] args) {
         System.out.println(strStr1("hello", "ll"));
         System.out.println(strStr1("aaaaa", "bba"));
+
         System.out.println(strStr1("a", "a"));
         System.out.println(strStr1("mississippi", "mississippi"));
     }

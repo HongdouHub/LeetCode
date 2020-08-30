@@ -70,4 +70,24 @@ public class PrepareListNode {
         System.out.println();
         System.out.println("-----------------");
     }
+
+    public static ListNode reverseList(ListNode head) {
+        return reverseList(head, null);
+    }
+
+    public static ListNode reverseList(ListNode head, ListNode tail) {
+
+        ListNode prev = null;
+        ListNode current = head;
+        ListNode next = null;
+
+        while (current != tail) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        return prev;
+    }
 }

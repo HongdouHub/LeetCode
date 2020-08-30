@@ -3,6 +3,8 @@ package leetcode.t21_t30.t25_ReverseKGroup;
 import leetcode.preparation.linkednode.ListNode;
 import leetcode.preparation.linkednode.PrepareListNode;
 
+import static leetcode.preparation.linkednode.PrepareListNode.reverseList;
+
 /**
  * 25. K 个一组翻转链表
  *
@@ -18,8 +20,8 @@ import leetcode.preparation.linkednode.PrepareListNode;
 public class ReverseKGroup {
 
     public static void main(String[] args) {
-//        PrepareListNode.print(reverseKGroup(PrepareListNode.generate(new Integer[]{1, 2, 3}), 2));
-//        PrepareListNode.print(reverseKGroup(PrepareListNode.generate(new Integer[]{1, 2, 3, 4, 5}), 2));
+        PrepareListNode.print(reverseKGroup(PrepareListNode.generate(new Integer[]{1, 2, 3}), 2));
+        PrepareListNode.print(reverseKGroup(PrepareListNode.generate(new Integer[]{1, 2, 3, 4, 5}), 2));
         PrepareListNode.print(reverseKGroup(PrepareListNode.generate(new Integer[]{1, 2, 3, 4, 5, 6, 7}), 3));
     }
 
@@ -41,27 +43,12 @@ public class ReverseKGroup {
         }
 
         // 反转前 k 个元素
-        ListNode newHead = reverse(head, tail);
+        ListNode newHead = reverseList(head, tail);
 
         // 下一轮的开始的地方就是tail
         head.next = reverseKGroup(tail, k);
 
         return newHead;
-    }
-
-    private static ListNode reverse(ListNode head, ListNode tail) {
-        ListNode pre = null;
-        ListNode next = null;
-
-        while (head != tail) {
-
-            next = head.next;
-            head.next = pre;
-            pre = head;
-            head = next;
-        }
-
-        return pre;
     }
 
 }

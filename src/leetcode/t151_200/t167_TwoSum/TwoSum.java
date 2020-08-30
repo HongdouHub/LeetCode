@@ -32,6 +32,13 @@ public class TwoSum {
         print(nums, twoSum2(nums, 9));
     }
 
+    private static void print(int[] nums, int[] result) {
+        System.out.print("序号:" + GsonUtil.array2Json(Arrays.asList(result)));
+        System.out.print(" -> ");
+        System.out.println("值:" + GsonUtil.array2Json(Arrays.asList(getResultValue(nums, result))));
+        System.out.println("------------------");
+    }
+
     /**
      * 二分查找
      *
@@ -98,19 +105,16 @@ public class TwoSum {
         return new int[]{-1, -1};
     }
 
-    private static void print(int[] nums, int[] result) {
-        System.out.print("序号:" + GsonUtil.array2Json(Arrays.asList(result)));
-        System.out.print(" -> ");
-        System.out.println("值:" + GsonUtil.array2Json(Arrays.asList(getResultValue(nums, result))));
-        System.out.println("------------------");
-    }
-
     private static int[] getResultValue(int[] nums, int[] result) {
         int[] resultValue = new int[result.length];
 
-        for (int i = 0, j = 0; i < nums.length && j < result.length; i++) {
-            if (result[j] == i) {
-                resultValue[j++] = nums[i];
+        for (int i = 0; i < nums.length; i++) {
+            if (result[0] == i) {
+                resultValue[0] = nums[i];
+                continue;
+            }
+            if (result[1] == i) {
+                resultValue[1] = nums[i];
             }
         }
         return resultValue;

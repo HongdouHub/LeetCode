@@ -25,14 +25,18 @@ public class BinaryTree {
         TreeNode root = PrepareTreeNode.generate(
                 new Integer[]{6, 2, 8, 0, 4, 7, 9, null, 3, 5});
 
-        TreeNode result = lowestCommonAncestor(root, new TreeNode(7), new TreeNode(9));
+        TreeNode result = lowestCommonAncestor(root, root.get(5), root.get(6));
         System.out.println(result != null ? result.val : null);
     }
 
     private static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null || root.equals(p) || root.equals(q)) return root;
+        if (root == null || root.equals(p) || root.equals(q)) {
+            return root;
+        }
+
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
+
         return left == null ? right :
                 right == null ? left : root;
     }
