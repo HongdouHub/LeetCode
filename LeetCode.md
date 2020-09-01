@@ -39,9 +39,9 @@
 | 30   | [292. Nim游戏](https://leetcode-cn.com/problems/nim-game/)   | 不能被4整除                                                  |                                                              |
 | 31   | [3. ⽆重复字符的最长⼦串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/) | 哈希表                                                       | 时/空 - O(n)                                                 |
 | 32   | [300. 最长上升⼦序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/) | 动态规划<br>二分查找                                         | 时/空 - O(n^2) / O(n)<br>时/空 - O(N·logN) / O(n)            |
-|      |                                                              |                                                              |                                                              |
-|      |                                                              |                                                              |                                                              |
-|      |                                                              |                                                              |                                                              |
+| 33   | [312. 戳⽓球](https://leetcode-cn.com/problems/burst-balloons/) | 记忆化搜索<br>动态规划                                       | 时/空 - O(n^3) / O(n^2)<br>时/空 - O(n^3) / O(n^2)           |
+| 34   | [319. 灯泡开关](https://leetcode-cn.com/problems/bulb-switcher/) | 1. 亮与否，跟操作次数有关<br>2. 操作次数就是该数的因数个数<br>3. 因数为奇数则亮灯<br>4. 奇数表明该位置是完全平方数<br>5. 计算有多少个完全平方数 |                                                              |
+| 35   | [322. 零钱兑换](https://leetcode-cn.com/problems/coin-change/) | 动态规划                                                     | 时/空 - O(mn) / O(n)                                         |
 |      |                                                              |                                                              |                                                              |
 |      |                                                              |                                                              |                                                              |
 |      |                                                              |                                                              |                                                              |
