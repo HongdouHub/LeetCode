@@ -69,4 +69,32 @@ public class TreeNode {
         }
         return root;
     }
+
+    /**
+     * 获取后继节点(右-左-左-左)
+     */
+    public TreeNode getSuccessor() {
+        TreeNode right = this.right;
+        if (right == null) {
+            return null;
+        }
+        while (right.left != null) {
+            right = right.left;
+        }
+        return right;
+    }
+
+    /**
+     * 获取前驱节点(左-右-右-右)
+     */
+    public TreeNode getPredecessor() {
+        TreeNode left = this.left;
+        if (left == null) {
+            return null;
+        }
+        while (left.right != null) {
+            left = left.right;
+        }
+        return left;
+    }
 }
