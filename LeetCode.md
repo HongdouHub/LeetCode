@@ -55,13 +55,13 @@
 | 46   | [416. 分割等和⼦集](https://leetcode-cn.com/problems/partition-equal-subset-sum/) | 1. 背包问题 + 动态规划<br>2. 背包问题 + 动态规划 + 滚动数组  | 时/空 - O(nc) / O(nc)<br>时/空 - O(nc) / O(c)                |
 | 47   | [42. 接⾬⽔](https://leetcode-cn.com/problems/trapping-rain-water/) | 按列求解                                                     | 时/空 - O(n) / O(n)                                          |
 | 48   | [43. 字符串相乘](https://leetcode-cn.com/problems/multiply-strings/) | 优化竖式                                                     | 时/空 - O(mn) / O(m+n)                                       |
-| 49   | [435. ⽆重叠区间](https://leetcode-cn.com/problems/non-overlapping-intervals/) |                                                              |                                                              |
-|      |                                                              |                                                              |                                                              |
-|      |                                                              |                                                              |                                                              |
-|      |                                                              |                                                              |                                                              |
-|      |                                                              |                                                              |                                                              |
-|      |                                                              |                                                              |                                                              |
-|      |                                                              |                                                              |                                                              |
+| 49   | [435. ⽆重叠区间](https://leetcode-cn.com/problems/non-overlapping-intervals/) | 1.  先以end做升序排序<br>2.  贪心解法                        | 时/空 - O(n) / O(1)                                          |
+| 50   | [438. 找到字符串中所有字⺟异位词](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/) | 滑动窗口                                                     | 时/空 - O(mn) / O(1)                                         |
+| 51   | [448. 找到所有数组中消失的数字](https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/) | 1.  哈希表<br>2.  原地修改【数值取负数】                     | 时/空 - O(n) / O(n)<br>时/空 - O(n) / O(1)                   |
+| 52   | [45. 跳跃游戏 II](https://leetcode-cn.com/problems/jump-game-ii/) | 贪心算法                                                     | 时/空 - O(n) / O(1)                                          |
+| 53   | [450. 删除⼆叉搜索树中的节点](https://leetcode-cn.com/problems/delete-node-in-a-bst/) | 1. 二叉排序树 - 中序 - 升序结果<br>2. 前驱节点<br>3. 后继节点<br>4. 递归深度优先 |                                                              |
+| 54   | [452. 用最少数量的箭引爆气球](https://leetcode-cn.com/problems/minimum-number-of-arrows-to-burst-balloons/) | 1.  先以end做升序排序<br/>2.  贪心解法                       | 时/空 - O(NlogN) / O(1)                                      |
+| 55   | [46. 全排列](https://leetcode-cn.com/problems/permutations/) | 回溯算法 + 深度优先                                          |                                                              |
 |      |                                                              |                                                              |                                                              |
 |      |                                                              |                                                              |                                                              |
 |      |                                                              |                                                              |                                                              |
