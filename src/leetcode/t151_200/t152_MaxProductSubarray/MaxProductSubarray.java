@@ -8,6 +8,7 @@ import java.util.List;
  *
  * 用零分割出多段数组，每段数组的负数个数为： 奇数（头尾遍历找最大）；偶数（相乘最大）
  */
+@SuppressWarnings("all")
 public class MaxProductSubarray {
 
     public static void main(String[] args) {

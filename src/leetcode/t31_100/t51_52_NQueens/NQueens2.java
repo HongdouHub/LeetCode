@@ -25,12 +25,8 @@ public class NQueens2 {
      */
     public static void main(String[] args) {
         sCount = 0;
-        int n = 5;
-        dfs(n, 0, 0, 0, 0);
+        dfs(4, 0, 0, 0, 0);
         System.out.println(sCount);
-
-        System.out.println(1 << 4);
-        System.out.println(10 >> 2);
     }
 
     private static void dfs(int n, int row, int col, int pie, int na) {

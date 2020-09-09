@@ -16,9 +16,9 @@ package leetcode.t1_t10.t5_LongestPalindrome;
 public class LongestPalindrome {
 
     public static void main(String[] args) {
-        test("babad");
-        test("cbbd");
-        test("cbefebd");
+        test("babad");      // bab
+        test("cbbd");       // bb
+        test("cbefebd");    // befeb
     }
 
     private static void test(String s) {
@@ -30,7 +30,7 @@ public class LongestPalindrome {
     /**
      * 方法一：暴力匹配 （Brute Force）
      *
-     * 时间复杂度：OO(N^3)，这里 N 是字符串的长度，枚举字符串的左边界、右边界，
+     * 时间复杂度：O(N^3)，这里 N 是字符串的长度，枚举字符串的左边界、右边界，
      * 然后继续验证子串是否是回文子串，这三种操作都与 N 相关；
      *
      * 空间复杂度：O(1)，只使用到常数个临时变量，与字符串长度无关。

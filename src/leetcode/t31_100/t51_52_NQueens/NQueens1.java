@@ -32,7 +32,7 @@ public class NQueens1 {
 
     private static void solveByDFS(int n, int row, List<Integer> curState) {
         if (row >= n) {
-            result.add(curState);
+            result.add(new ArrayList<>(curState));
             return;
         }
 
@@ -45,13 +45,14 @@ public class NQueens1 {
             cols.add(col);
             pies.add(row + col);
             nas.add(row - col);
-
             curState.add(col);
+
             solveByDFS(n, row + 1, curState);
 
             cols.remove(col);
             pies.remove(row + col);
             nas.remove(row - col);
+            curState.remove(curState.size() - 1);
         }
     }
 

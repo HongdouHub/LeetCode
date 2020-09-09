@@ -5,6 +5,10 @@ import static leetcode.preparation.array.ConsoleColors.YELLOW_BACKGROUND_BRIGHT;
 
 public class PrepareArray {
 
+    public static void main(String[] args) {
+        print(new int[][]{new int[]{12,222,3}, new int[]{4,5,6}, new int[]{7,8,9}});
+    }
+
     public static void print(int[] array) {
         if (array == null) {
             return;
@@ -14,10 +18,6 @@ public class PrepareArray {
             System.out.print(a + " ");
         }
         System.out.println("\n---------------------\n");
-    }
-
-    public static void main(String[] args) {
-        print(new int[][]{new int[]{12,222,3}, new int[]{4,5,6}, new int[]{7,8,9}});
     }
 
     public static void print(int[][] array) {
