@@ -2,21 +2,35 @@ package leetcode.t1_t10.t5_LongestPalindrome;
 
 /**
  * 5. 最长回文子串
- *
  * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+ *
+ * 示例 1：
+ * 输入: "babad"
+ * 输出: "bab"
+ * 注意: "aba" 也是一个有效答案。
+ *
+ * 示例 2：
+ * 输入: "cbbd"
+ * 输出: "bb"
  */
 public class LongestPalindrome {
 
     public static void main(String[] args) {
-        System.out.println(longestPalindrome1("cbefebd"));
-        System.out.println(longestPalindrome2("cbefebd"));
+        test("babad");      // bab
+        test("cbbd");       // bb
+        test("cbefebd");    // befeb
+    }
 
+    private static void test(String s) {
+        System.out.println(longestPalindrome1(s));
+        System.out.println(longestPalindrome2(s));
+        System.out.println("-----------------\n");
     }
 
     /**
      * 方法一：暴力匹配 （Brute Force）
      *
-     * 时间复杂度：OO(N^3)，这里 N 是字符串的长度，枚举字符串的左边界、右边界，
+     * 时间复杂度：O(N^3)，这里 N 是字符串的长度，枚举字符串的左边界、右边界，
      * 然后继续验证子串是否是回文子串，这三种操作都与 N 相关；
      *
      * 空间复杂度：O(1)，只使用到常数个临时变量，与字符串长度无关。

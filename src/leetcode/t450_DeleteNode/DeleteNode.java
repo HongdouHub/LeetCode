@@ -1,14 +1,11 @@
 package leetcode.t450_DeleteNode;
 
 import leetcode.preparation.treenode.TreeNode;
-import leetcode.t448_FindDisappearedNumbers.FindDisappearedNumbers;
 
 import java.lang.reflect.Method;
-import java.util.List;
 
 import static leetcode.preparation.treenode.PrepareTreeNode.generate;
 import static leetcode.preparation.treenode.PrepareTreeNode.print;
-import static utils.ConsoleUtils.println;
 
 /**
  * 450. 删除二叉搜索树中的节点

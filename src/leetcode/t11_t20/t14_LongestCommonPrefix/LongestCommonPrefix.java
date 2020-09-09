@@ -1,9 +1,19 @@
 package leetcode.t11_t20.t14_LongestCommonPrefix;
 
+/**
+ * 14. 最长公共前缀
+ *
+ * 编写一个函数来查找字符串数组中的最长公共前缀。
+ * 如果不存在公共前缀，返回空字符串 ""。
+ *
+ * 示例 1:
+ *      输入: ["flower","flow","flight"]
+ *      输出: "fl"
+ */
 public class LongestCommonPrefix {
 
     public static void main(String[] args) {
-        System.out.println(longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
+        System.out.println(longestCommonPrefix(new String[]{"flower", "flow", "flight"})); // fl
     }
 
     private static String longestCommonPrefix(String[] strs) {

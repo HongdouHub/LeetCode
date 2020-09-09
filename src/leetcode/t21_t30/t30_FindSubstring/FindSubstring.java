@@ -20,6 +20,7 @@ import java.util.*;
  * 从索引 0 和 9 开始的子串分别是 "barfoo" 和 "foobar" 。
  * 输出的顺序不重要, [9,0] 也是有效答案。
  */
+@SuppressWarnings("all")
 public class FindSubstring {
 
     private static void print(List<Integer> list) {
@@ -45,12 +46,14 @@ public class FindSubstring {
         int wordLen = words[0].length();
         int wordTotalLen = wordLen * wordSize;
 
+        // 待查询单词Map
         Map<String, Integer> wordCountMap = new HashMap<>();
         for (int i = 0; i < wordSize; i++) {
             wordCountMap.put(words[i], (wordCountMap.getOrDefault(words[i], 0)) + 1);
         }
 
         List<Integer> result = new ArrayList<>();
+        // 遍历过程的Map
         Map<String, Integer> traversalCountMap = new HashMap<>();
         for (int i = 0; i < sLen - wordTotalLen + 1; i++) {
             int j;
@@ -93,11 +96,9 @@ public class FindSubstring {
         List<Integer> result = new ArrayList<>();
         Map<String, Integer> traversalCountMap = new HashMap<> ();
         for (int i = 0; i < sLen - wordTotalLen + 1; i++) {
-
             String temp = s.substring(i, i + wordTotalLen);
 
             for (int j = 0; j < wordTotalLen; j += wordLen) {
-
                 String maybeWord = temp.substring(j, j + wordLen);
                 traversalCountMap.put(maybeWord, traversalCountMap.getOrDefault(maybeWord, 0) + 1);
             }

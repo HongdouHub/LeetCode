@@ -16,10 +16,10 @@ package leetcode.t1143_LongestCommonSubsequence;
 public class LongestCommonSubsequence {
 
     public static void main(String[] args) {
-        System.out.println(longestCommonSubsequence("abc", "ac"));
-        System.out.println(longestCommonSubsequence("abcde", "ace"));
-        System.out.println(longestCommonSubsequence("abc", "abc"));
-        System.out.println(longestCommonSubsequence("abc", "def"));
+        System.out.println(longestCommonSubsequence("abc", "ac"));      // 2
+        System.out.println(longestCommonSubsequence("abcde", "ace"));   // 3
+        System.out.println(longestCommonSubsequence("abc", "abc"));     // 3
+        System.out.println(longestCommonSubsequence("abc", "def"));     // 0
     }
 
     private static int longestCommonSubsequence(String text1, String text2) {
