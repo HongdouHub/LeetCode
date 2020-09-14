@@ -1,6 +1,7 @@
 package leetcode.t448_FindDisappearedNumbers;
 
-import java.lang.reflect.Method;
+import leetcode.preparation.MethodBuilder;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,14 +31,13 @@ public class FindDisappearedNumbers {
     }
 
     private static void test(String methodName) {
-        try {
-            Class clazz = FindDisappearedNumbers.class;
-            Method method = clazz.getDeclaredMethod(methodName, new Class[]{int[].class});
+        MethodBuilder builder = new MethodBuilder.Builder()
+                .setClazz(FindDisappearedNumbers.class)
+                .setMethodName(methodName)
+                .setParameterTypes(new Class[]{int[].class})
+                .build();
 
-            println((List) method.invoke(clazz, new int[]{4, 3, 2, 7, 8, 2, 3, 1}));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        println((List) builder.invoke(new int[]{4, 3, 2, 7, 8, 2, 3, 1}));
     }
 
     /**

@@ -1,5 +1,7 @@
 package leetcode.t1143_LongestCommonSubsequence;
 
+import leetcode.preparation.array.PrepareArray;
+
 /**
  * 1143. 最长公共子序列
  * <p>
@@ -17,9 +19,9 @@ public class LongestCommonSubsequence {
 
     public static void main(String[] args) {
         System.out.println(longestCommonSubsequence("abc", "ac"));      // 2
-        System.out.println(longestCommonSubsequence("abcde", "ace"));   // 3
-        System.out.println(longestCommonSubsequence("abc", "abc"));     // 3
-        System.out.println(longestCommonSubsequence("abc", "def"));     // 0
+//        System.out.println(longestCommonSubsequence("abcde", "ace"));   // 3
+//        System.out.println(longestCommonSubsequence("abc", "abc"));     // 3
+//        System.out.println(longestCommonSubsequence("abc", "def"));     // 0
     }
 
     private static int longestCommonSubsequence(String text1, String text2) {
@@ -39,13 +41,20 @@ public class LongestCommonSubsequence {
         // 3. 思考状态转移方程
         for (int i = 0; i < len1; i++) {
             for (int j = 0; j < len2; j++) {
+                System.out.println(String.format("%s == %s", text1.charAt(i), text2.charAt(j)));
 
                 if (text1.charAt(i) == text2.charAt(j)) {
+                    System.out.println(String.format("dp[%d][%d] = dp[%d][%d] + 1 = %d + 1;",
+                            (i+1), (j+1), i, j, dp[i][j]));
+
                     dp[i + 1][j + 1] = dp[i][j] + 1;
                 } else {
+                    System.out.println(String.format("dp[%d][%d] = Math.max(dp[%d][%d], dp[%d][%d])\n= Math.max(%d, %d);",
+                            (i+1), (j+1), (i+1), j, i, (j+1), dp[i + 1][j], dp[i][j + 1]));
+
                     dp[i + 1][j + 1] = Math.max(dp[i + 1][j], dp[i][j + 1]);
                 }
-//                PrepareArray.print(dp);
+                PrepareArray.print(dp);
             }
         }
 
