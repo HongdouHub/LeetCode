@@ -65,9 +65,9 @@
 | 56   | [496. 下⼀个更⼤元素I](https://leetcode-cn.com/problems/next-greater-element-i/) | 1. 双指针<br>2. 单调栈                                       | 时/空 - O(N^2 + M) / O(N)<br>时/空 - O(N + M) / O(N)         |
 | 57   | [5. 最长回⽂⼦串](https://leetcode-cn.com/problems/longest-palindromic-substring/) | 1. 暴力解法 + 双指针<br>2. 动态规划                          |                                                              |
 | 58   | [503. 下⼀个更⼤元素II](https://leetcode-cn.com/problems/next-greater-element-ii/) | 1. 双倍数组，逆序遍历，push前赋值<br>2. 单调栈               | 时/空 - O(n) / O(n)                                          |
-|      |                                                              |                                                              |                                                              |
-|      |                                                              |                                                              |                                                              |
-|      |                                                              |                                                              |                                                              |
+| 59   | [509. 斐波那契数](https://leetcode-cn.com/problems/fibonacci-number/) | 动态规划                                                     | 时/空 - O(n) / O(n)                                          |
+| 60   | [51. N皇后](https://leetcode-cn.com/problems/n-queens/)      | 回溯算法                                                     | 时/空 - O(n!) / O(n)                                         |
+| 61   | [516. 最长回⽂⼦序列](https://leetcode-cn.com/problems/longest-palindromic-subsequence/) | 动态规划                                                     | 时/空 - O(n^2) / O(n^2)                                      |
 |      |                                                              |                                                              |                                                              |
 |      |                                                              |                                                              |                                                              |
 |      |                                                              |                                                              |                                                              |

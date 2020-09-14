@@ -1,5 +1,7 @@
 package leetcode.t516_LongestPalindromeSubseq;
 
+import leetcode.preparation.array.PrepareArray;
+
 /**
  * 516. 最长回文子序列
  *
@@ -20,51 +22,43 @@ package leetcode.t516_LongestPalindromeSubseq;
 public class LongestPalindromeSubseq {
 
     public static void main(String[] args) {
-        System.out.println(longestPalindromeSubseq("bbbab"));
-        System.out.println(longestPalindromeSubseq("cbbd"));
+        System.out.println(longestPalindromeSubseq("bbbab")); // 4(bbbb)
+        System.out.println(longestPalindromeSubseq("cbbd"));  // 2(bb)
+        System.out.println(longestPalindromeSubseq("aabaa")); // 5(aabaa)
 
     }
 
     private static int longestPalindromeSubseq(String s) {
-        int len = s.length();
+        int length = s.length();
 
-        if (len < 2) {
-            return len;
+        if (length < 2) {
+            return length;
         }
 
         char[] chars = s.toCharArray();
 
-        // 1. 状态定义：dp[i][j] 表示 s[i, j] 是否是回文串
-        boolean[][] dp = new boolean[len][len];
+        // 1. 状态定义：dp[i][j] 表示 s[i, j] 中最长回文子序列的长度
+        int[][] dp = new int[length][length];
 
         // 2. 初始化状态
-        for (int i = 0; i < len; i++) {
-            dp[i][i] = true;
+        for (int i = 0; i < length; i++) {
+            dp[i][i] = 1;
         }
-
-        int maxLen = 1;
 
         // 3. 思考状态转移方程
-//        dp[i][j] = (chars[i] == chars[j]) && j - i < 3 || dp[i + 1][j - 1];
+//        dp[i][j] = (chars[i] == chars[j]) ?
+//                dp[i + 1][j - 1] + 2 :
+//                Math.max(dp[i + 1][j], dp[i][j - 1]);
 
-        // 从目的点j= 1开始计算，长度小于len
-        for (int j = 1; j < len; j++) {
-            // 起始点i= 0，一定小于j
-            for (int i = 0; i < j; i++) {
-                if (chars[i] != chars[j]) {
-                    dp[i][j] = false;
-                } else if (j - i < 3) {
-                    dp[i][j] = true;
-                } else {
-                    dp[i][j] = dp[i + 1][j - 1];
-                }
+        for (int i = length - 1; i >= 0; i--) {
+            for (int j = i + 1; j < length; j++) {
+                dp[i][j] = (chars[i] == chars[j]) ?
+                        dp[i + 1][j - 1] + 2 :
+                        Math.max(dp[i + 1][j], dp[i][j - 1]);
 
-                // 只要 dp[i][j] == true 成立，就表示子串 s[i..j] 是回文，此时记录回文长度和起始位置
-                if (dp[i][j] && j - i + 1 > maxLen) {
-                    maxLen = j - i + 1;
-                }
+//                PrepareArray.print(dp);
             }
         }
-        return maxLen;
+        return dp[0][length - 1];
     }
 }

@@ -1,9 +1,8 @@
 package leetcode.t31_100.t43_Multiply;
 
 
+import leetcode.preparation.MethodBuilder;
 import utils.TextUtils;
-
-import java.lang.reflect.Method;
 
 /**
  * 43. 字符串相乘
@@ -29,15 +28,15 @@ public class Multiply {
     }
 
     private static void test(String methodName) {
-        try {
-            Method method = Multiply.class.getDeclaredMethod(methodName, new Class[]{String.class, String.class});
+        MethodBuilder build = new MethodBuilder.Builder()
+                .setClazz(Multiply.class)
+                .setMethodName(methodName)
+                .setParameterTypes(new Class[]{String.class, String.class})
+                .build();
 
-            System.out.println(method.invoke(Multiply.class, "2", "5"));
-            System.out.println(method.invoke(Multiply.class, "123", "456"));
-            System.out.println(method.invoke(Multiply.class, "498828660196", "840477629533"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.out.println(build.invoke("2", "5"));
+        System.out.println(build.invoke("123", "456"));
+        System.out.println(build.invoke("498828660196", "840477629533"));
     }
 
     /**

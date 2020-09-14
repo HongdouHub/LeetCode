@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 最长上升子序列
+ * 300. 最长上升子序列
  */
 public class LongestIncreasingSequence {
 
@@ -42,12 +42,12 @@ public class LongestIncreasingSequence {
 
         // 3.思考状态转移方程
         int maxValue = 1;
-        for (int i = 1; i < length; i++) {
-            for (int j = 0; j < i; j++) {
-                if (raw[j] < raw[i])
-                    dp[i] = Math.max(dp[i], dp[j] + 1);
+        for (int j = 1; j < length; j++) {
+            for (int i = 0; i < j; i++) {
+                if (raw[i] < raw[j])
+                    dp[j] = Math.max(dp[j], dp[i] + 1);
             }
-            maxValue = Math.max(maxValue, dp[i]);
+            maxValue = Math.max(maxValue, dp[j]);
         }
         return maxValue;
     }

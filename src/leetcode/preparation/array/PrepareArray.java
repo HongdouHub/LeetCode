@@ -1,5 +1,7 @@
 package leetcode.preparation.array;
 
+import utils.TextUtils;
+
 import static leetcode.preparation.array.ConsoleColors.RESET;
 import static leetcode.preparation.array.ConsoleColors.YELLOW_BACKGROUND_BRIGHT;
 
@@ -21,6 +23,10 @@ public class PrepareArray {
     }
 
     public static void print(int[][] array) {
+        print(array, "", "");
+    }
+
+    public static void print(int[][] array, String xName, String yName) {
         if (array == null) {
             return;
         }
@@ -37,6 +43,8 @@ public class PrepareArray {
                 if (i == 0) {
                     if (j != childLength) {
                         System.out.print(YELLOW_BACKGROUND_BRIGHT + String.format(" %3s |", "【" + j + "】") + RESET);
+                    } else {
+                        System.out.print(TextUtils.isEmpty(yName) ? "" : " (" + yName + ")");
                     }
                 } else {
                     if (j == 0) {
@@ -48,6 +56,9 @@ public class PrepareArray {
 
                 if (j == childLength) {
                     System.out.println();
+                    if (i == length) {
+                        System.out.print(TextUtils.isEmpty(xName) ? "" : "(" + xName + ")");
+                    }
                 }
             }
         }
@@ -55,6 +66,10 @@ public class PrepareArray {
     }
 
     public static void print(char[][] array) {
+        print(array, "", "");
+    }
+
+    public static void print(char[][] array, String xName, String yName) {
         if (array == null) {
             return;
         }
@@ -71,6 +86,8 @@ public class PrepareArray {
                 if (i == 0) {
                     if (j != childLength) {
                         System.out.print(YELLOW_BACKGROUND_BRIGHT + String.format(" %3s |", "【" + j + "】") + RESET);
+                    } else {
+                        System.out.print(TextUtils.isEmpty(yName) ? "" : " (" + yName + ")");
                     }
                 } else {
                     if (j == 0) {
@@ -82,6 +99,9 @@ public class PrepareArray {
 
                 if (j == childLength) {
                     System.out.println();
+                    if (i == length) {
+                        System.out.print(TextUtils.isEmpty(xName) ? "" : "(" + xName + ")");
+                    }
                 }
             }
         }
@@ -89,6 +109,10 @@ public class PrepareArray {
     }
 
     public static void print(boolean[][] array) {
+        print(array, "", "");
+    }
+
+    public static void print(boolean[][] array, String xName, String yName) {
         if (array == null) {
             return;
         }
@@ -105,6 +129,8 @@ public class PrepareArray {
                 if (i == 0) {
                     if (j != childLength) {
                         System.out.print(YELLOW_BACKGROUND_BRIGHT + String.format(" %3s |", "【" + j + "】") + RESET);
+                    } else {
+                        System.out.print(TextUtils.isEmpty(yName) ? "" : " (" + yName + ")");
                     }
                 } else {
                     if (j == 0) {
@@ -116,6 +142,9 @@ public class PrepareArray {
 
                 if (j == childLength) {
                     System.out.println();
+                    if (i == length) {
+                        System.out.print(TextUtils.isEmpty(xName) ? "" : "(" + xName + ")");
+                    }
                 }
             }
         }

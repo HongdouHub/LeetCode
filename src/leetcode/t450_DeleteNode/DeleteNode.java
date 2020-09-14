@@ -1,8 +1,7 @@
 package leetcode.t450_DeleteNode;
 
+import leetcode.preparation.MethodBuilder;
 import leetcode.preparation.treenode.TreeNode;
-
-import java.lang.reflect.Method;
 
 import static leetcode.preparation.treenode.PrepareTreeNode.generate;
 import static leetcode.preparation.treenode.PrepareTreeNode.print;
@@ -28,18 +27,17 @@ public class DeleteNode {
     }
 
     private static void test(String methodName) {
-        try {
-            Class clazz = DeleteNode.class;
-            Method method = clazz.getDeclaredMethod(methodName, new Class[]{TreeNode.class, int.class});
+        MethodBuilder builder = new MethodBuilder.Builder()
+                .setClazz(DeleteNode.class)
+                .setMethodName(methodName)
+                .setParameterTypes(new Class[]{TreeNode.class, int.class})
+                .build();
 
-            TreeNode treeNode = generate(new Integer[]{5, 3, 6, 2, 4, null, 7});
-            print(treeNode);
-            print((TreeNode) method.invoke(clazz, treeNode, 3));
-            print((TreeNode) method.invoke(clazz, treeNode, 5));
-            print((TreeNode) method.invoke(clazz, treeNode, 8));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        TreeNode treeNode = generate(new Integer[]{5, 3, 6, 2, 4, null, 7});
+        print(treeNode);
+        print((TreeNode) builder.invoke(treeNode, 3));
+        print((TreeNode) builder.invoke(treeNode, 5));
+        print((TreeNode) builder.invoke(treeNode, 8));
     }
 
     /**
