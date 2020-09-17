@@ -97,4 +97,22 @@ public class TreeNode {
         }
         return left;
     }
+
+    public TreeNode searchBST(int val) {
+        return searchBSTByDFS(this, val);
+    }
+
+    private TreeNode searchBSTByDFS(TreeNode root, int val) {
+        if (root == null) {
+            return null;
+        }
+
+        if (root.val == val) {
+            return root;
+        } else if (root.val > val) {
+            return searchBSTByDFS(root.left, val);
+        } else {
+            return searchBSTByDFS(root.right, val);
+        }
+    }
 }

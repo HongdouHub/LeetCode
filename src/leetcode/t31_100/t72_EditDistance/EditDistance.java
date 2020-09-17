@@ -27,8 +27,11 @@ public class EditDistance {
         int rawSize = rawWords.length();
         int destSize = destWords.length();
 
-        // word1 的前 i 个字符，变换到， word2 的前 j 个字符 最少步数
+
+        // 1. 状态定义，dp[i][j] 表示 word1 的前 i 个字符，变换到，word2 的前 j 个字符 最少步数
         int[][] dp = new int[rawSize + 1][destSize + 1];
+
+        // 2. 初始化状态
         for (int i = 0; i < rawSize + 1; i++) {
             dp[i][0] = i;
         }
@@ -36,6 +39,7 @@ public class EditDistance {
             dp[0][j] = j;
         }
 
+        // 3. 思考状态转移方程
         for (int i = 1; i < rawSize + 1; i++) {
             for (int j = 1; j < destSize + 1; j++) {
 

@@ -1,12 +1,13 @@
 package leetcode.preparation.treenode;
 
-import leetcode.preparation.linkednode.ListNode;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class PrepareTreeNode {
 
+    /**
+     * 生成二叉树
+     */
     public static TreeNode generate(Integer[] array) {
         if (array == null) return null;
         return createBinaryTreeByArray(array, 0);
@@ -23,6 +24,34 @@ public class PrepareTreeNode {
             }
         }
         return null;
+    }
+
+    /**
+     * 生成二叉搜索树
+     */
+    public static TreeNode generateBST(Integer[] array) {
+        if (array == null) return null;
+        TreeNode result = null;
+
+        for (int i = 0; i < array.length; i++) {
+            result = insertIntoBST(result, array[i]);
+        }
+        return result;
+    }
+
+    private static TreeNode insertIntoBST(TreeNode root, int val) {
+        if (root == null) {
+            return new TreeNode(val);
+        }
+
+        if (root.val > val) {
+            root.left = insertIntoBST(root.left, val);
+        }
+
+        if (root.val < val) {
+            root.right = insertIntoBST(root.right, val);
+        }
+        return root;
     }
 
     public static void print(TreeNode treeNode) {
