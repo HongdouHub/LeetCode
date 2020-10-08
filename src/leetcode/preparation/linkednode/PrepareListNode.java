@@ -62,13 +62,16 @@ public class PrepareListNode {
         if (listNode == null) {
             System.out.print("null");
         } else {
+            StringBuilder builder = new StringBuilder();
             while (listNode != null) {
-                System.out.print(listNode.val + ", ");
+                builder.append(listNode.val);
+                builder.append(" -> ");
                 listNode = listNode.next;
             }
+            System.out.println(builder.toString().substring(0, builder.length() - 4));
         }
         System.out.println();
-        System.out.println("-----------------");
+        System.out.println("-----------------\n");
     }
 
     public static ListNode reverseList(ListNode head) {

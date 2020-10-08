@@ -93,20 +93,21 @@ public class Calculate {
      * 空间复杂度：O(N)
      */
     private static int calculate2(String s) {
-        return calculate2(s, new int[1]);
-    }
-
-    private static int calculate2(String s, int[] i) {
         int length;
         if (s == null || (length = s.length()) == 0) {
             return 0;
         }
 
+        return calculate2(s, new int[1]);
+    }
+
+    private static int calculate2(String s, int[] i) {
+        int length = s.length();
         Stack<Integer> stack = new Stack<Integer>();
         int num = 0;
         char sign = '+';
 
-        for (; i[0] < length; i[0]++) {
+        for (; i[0] < length; i[0] += 1) {
             char c = s.charAt(i[0]);
             boolean isDigit = Character.isDigit(c);
 
@@ -117,11 +118,12 @@ public class Calculate {
 
             // 2. 再判断小括号
             if (c == '(') {
-                i[0]++;
+                i[0] += 1;
                 num = calculate2(s, i);
             }
 
-            // 3. 再判断操作符 + - * /
+            // 3. 再判断操作符 + -
+            // 最后一次，数据只是存在num中，没有存入stack，故仍然让其进入该判断
             if (!isDigit && c != ' ' || i[0] == length - 1) {
                 switch (sign) {
                     case '+':

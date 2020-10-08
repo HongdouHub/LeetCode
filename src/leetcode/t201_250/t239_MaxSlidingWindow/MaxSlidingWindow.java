@@ -23,7 +23,8 @@ public class MaxSlidingWindow {
 //        int k = 3;
 
         print(maxSlidingWindow1(new int[] {1, 3, 1, 2, 0, 5}, 3));
-        print(maxSlidingWindow2(new int[] {1, 3, 1, 2, 0, 5}, 3));
+//        print(maxSlidingWindow2(new int[] {1, 3, 1, 2, 0, 5}, 3));
+        print(maxSlidingWindow2(new int[] {10000, 10001, 10002, 10003, 10004}, 3));
     }
 
     /**
@@ -74,6 +75,8 @@ public class MaxSlidingWindow {
             }
 
             deque.offer(i);
+//            deque.offerFirst();
+//            deque.offerLast();
 
             // 去掉超过窗口大小的数据
             if (deque.peek() <= i - k) {

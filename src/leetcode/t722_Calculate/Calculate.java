@@ -1,65 +1,54 @@
-package leetcode.t201_250.t227_Calculate;
-
-import sun.security.util.AuthResources_it;
+package leetcode.t722_Calculate;
 
 import java.util.Stack;
 
 /**
- * 227. 基本计算器 II
+ * 227. 基本计算器 III
  *
- * 实现一个基本的计算器来计算一个简单的字符串表达式的值。
- * 字符串表达式仅包含非负整数，+， - ，*，/ 四种运算符和空格  。 整数除法仅保留整数部分。
+ * 实现一个基本的计算器来计算一个简单的表达式字符串。
+ * 表达式字符串可以包含开括号（和右括号），加号+或减号-，非负整数和空格。
+ * 表达式字符串仅包含非负整数，+，-，*，/运算符，左（和右括号）和空格。整数除法应截断为零。
+ * 您可以假设给定的表达式始终有效。所有中间结果将在[-2147483648，2147483647]范围内。
  *
- * 示例 1:
- * 输入: "3+2*2"
- * 输出: 7
  */
-@SuppressWarnings("all")
 public class Calculate {
 
     public static void main(String[] args) {
-        System.out.println(calculate("3+2*2/(2/2)"));
+        System.out.println(calculate("1 + 1"));                     // 2
+        System.out.println(calculate(" 6-4 / 2 "));                 // 4
+        System.out.println(calculate("2*(5+5*2)/3+(6/2+8)"));       // 21
+        System.out.println(calculate("(2+6* 3+5- (3*14/7+2)*5)+3"));// -12
     }
 
     private static int calculate(String s) {
-        int length;
-        if (s == null || (length = s.length()) == 0) {
+        if (s == null || s.length() == 0) {
             return 0;
         }
-
         return calculate(s, new int[1]);
     }
 
-    private static int calculate(String s, int[] i) {
+    private static int calculate(String s, int[] index) {
         int length = s.length();
-        Stack<Integer> stack = new Stack<Integer>();
+        Stack<Integer> stack = new Stack<>();
         int num = 0;
         char sign = '+';
 
-        for (; i[0] < length; i[0] += 1) {
-            char c = s.charAt(i[0]);
+        for (; index[0] < length; index[0] += 1) {
+            char c = s.charAt(index[0]);
             boolean isDigit = Character.isDigit(c);
 
-            // 1. 先判断数字
             if (isDigit) {
                 num = num * 10 + (c - '0');
             }
 
-            // 2. 再判断小括号
             if (c == '(') {
-                i[0] += 1;
-                num = calculate(s, i);
+                index[0] += 1;
+                num = calculate(s, index);
             }
 
-            if (i[0] == length - 1){
-                System.out.println("----");
-            }
-
-            // 3. 再判断操作符 + - * /
-            // 最后一次，数据只是存在num中，没有存入stack，故仍然让其进入该判断
-            if (!isDigit && c != ' ' || i[0] == length - 1) {
+            if (!isDigit && c != ' ' || index[0] == length - 1) {
                 switch (sign) {
-                    case '+':
+                    case '+' :
                         stack.push(num);
                         break;
                     case '-':
@@ -78,7 +67,6 @@ public class Calculate {
                 num = 0;
             }
 
-            // 4. 最后再判断小括号退出循环
             if (c == ')') {
                 break;
             }
@@ -91,9 +79,7 @@ public class Calculate {
         int result = 0;
         while (!stack.isEmpty()) {
             result += stack.pop();
-
         }
         return result;
     }
-
 }
