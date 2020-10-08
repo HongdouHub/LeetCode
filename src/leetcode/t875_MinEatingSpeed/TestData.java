@@ -1,4 +1,4 @@
-package leetcode.t11_t20.t15_ThreeSum;
+package leetcode.t875_MinEatingSpeed;
 
 import com.google.gson.reflect.TypeToken;
 import utils.FileOpenUtils;
@@ -17,7 +17,7 @@ public class TestData {
         }
 
         private static int[] getTestData() {
-            String path = "D:\\IntelliJ IDEA\\Work_Java_Study\\unit\\Test2019\\src\\leetcode\\t15_ThreeSum\\TEST_DATA";
+            String path = "D:\\IntelliJ IDEA\\Work_Java_Study\\unit\\Test2019\\src\\leetcode\\t875_MinEatingSpeed\\TEST_DATA";
             String data = getFileData(path);
             List<Integer> list = GsonUtil.json2Array(data, new TypeToken<List<Integer>>() {
             });
