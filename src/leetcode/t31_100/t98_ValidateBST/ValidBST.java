@@ -1,7 +1,9 @@
 package leetcode.t31_100.t98_ValidateBST;
 
-import leetcode.preparation.treenode.PrepareTreeNode;
+import leetcode.preparation.MethodBuilder;
 import leetcode.preparation.treenode.TreeNode;
+
+import static leetcode.preparation.treenode.PrepareTreeNode.generate;
 
 /**
  * 校验二叉树是否为二叉排序树
@@ -12,55 +14,28 @@ import leetcode.preparation.treenode.TreeNode;
 public class ValidBST {
 
     public static void main(String[] args) {
-        testInOrder();
-
-        testRecursion();
+        test("isValidBST1");
+        test("isValidBST2");
     }
 
-    private static void testRecursion() {
-        TreeNode root1 = PrepareTreeNode.generate(
-                new Integer[]{3, 1, 5, null, 2});
-        System.out.println(validBSTByRecursion(root1));
+    private static void test(String methodName) {
+        MethodBuilder build = new MethodBuilder.Builder()
+                .setClazz(ValidBST.class)
+                .setMethodName(methodName)
+                .setParameterTypes(new Class[]{TreeNode.class})
+                .build();
 
-        TreeNode root2 = PrepareTreeNode.generate(
-                new Integer[]{5, 1, 4, null, null, 3, 6});
-        System.out.println(validBSTByRecursion(root2));
-
-        TreeNode root3 = PrepareTreeNode.generate(
-                new Integer[]{null});
-        System.out.println(validBSTByRecursion(root3));
+        System.out.println(String.format("----------%s---------", methodName));
+        System.out.println(build.invoke(generate(3, 1, 5, null, 2)));
+        System.out.println(build.invoke(generate(5, 1, 4, null, null, 3, 6)));
+        System.out.println(build.invoke(generate(new Integer[]{null})));
+        System.out.println("---------------------------\n");
     }
 
-    private static void testInOrder() {
-        TreeNode root1 = PrepareTreeNode.generate(
-                new Integer[]{3, 1, 5, null, 2});
-        System.out.println(validBST(root1));
-
-        TreeNode root2 = PrepareTreeNode.generate(
-                new Integer[]{5, 1, 4, null, null, 3, 6});
-        System.out.println(validBST(root2));
-
-        TreeNode root3 = PrepareTreeNode.generate(
-                new Integer[]{null});
-        System.out.println(validBST(root3));
-    }
-
-    // 中序遍历
-    private static TreeNode pre = null;
-    private static boolean validBST(TreeNode root) {
-        if (root == null)
-            return true;
-        if (!validBST(root.left))
-            return false;
-        if (pre != null && pre.val >= root.val)
-            return false;
-
-        pre = root;
-        return validBST(root.right);
-    }
-
-    // 普通递归
-    private static boolean validBSTByRecursion(TreeNode root) {
+    /**
+     * 深度优先递归遍历
+     */
+    private static boolean isValidBST1(TreeNode root) {
         return isValid(root, null, null);
     }
 
@@ -71,6 +46,21 @@ public class ValidBST {
 
         return isValid(root.left, min, root.val) &&
                 isValid(root.right, root.val, max);
+    }
+
+    /**
+     * 中序遍历
+     */
+    private static TreeNode pre = null;
+    private static boolean isValidBST2(TreeNode root) {
+        if (root == null) return true;
+
+        if (!isValidBST2(root.left)) return false;
+
+        if (pre != null && pre.val >= root.val) return false;
+
+        pre = root;
+        return isValidBST2(root.right);
     }
 
 }

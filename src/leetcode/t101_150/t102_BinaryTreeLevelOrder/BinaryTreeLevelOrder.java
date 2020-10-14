@@ -17,7 +17,7 @@ import java.util.Queue;
 public class BinaryTreeLevelOrder {
 
     public static void main(String[] args) {
-        TreeNode node = PrepareTreeNode.generate(new Integer[]{3, 9, 20, null, null, 15, 7});
+        TreeNode node = PrepareTreeNode.generate(3, 9, 20, null, null, 15, 7);
         if (node == null) {
             System.out.println("输入有误");
             return;

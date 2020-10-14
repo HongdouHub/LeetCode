@@ -33,7 +33,7 @@ public class DeleteBST {
                 .setParameterTypes(new Class[]{TreeNode.class, int.class})
                 .build();
 
-        TreeNode treeNode = generate(new Integer[]{5, 3, 6, 2, 4, null, 7});
+        TreeNode treeNode = generate(5, 3, 6, 2, 4, null, 7);
         print(treeNode);
         print((TreeNode) builder.invoke(treeNode, 3));
         print((TreeNode) builder.invoke(treeNode, 5));

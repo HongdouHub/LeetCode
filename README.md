@@ -34,7 +34,7 @@ This repository is to record some leetcode's study experience.
 | 11   | [354. 俄罗斯套娃信封问题](https://leetcode-cn.com/problems/russian-doll-envelopes/) | [最长递增子序列扩展到二维而已](https://leetcode-cn.com/problems/russian-doll-envelopes/solution/zui-chang-di-zeng-zi-xu-lie-kuo-zhan-dao-er-wei-er/) |
 | 12   | [384. 打乱数组](https://leetcode-cn.com/problems/shuffle-an-array/) | [洗牌算法深度详解](https://leetcode-cn.com/problems/shuffle-an-array/solution/xi-pai-suan-fa-shen-du-xiang-jie-by-labuladong/) |
 | 13   | [146. LRU缓存机制](https://leetcode-cn.com/problems/lru-cache/) | [LRU 策略详解和实现](https://leetcode-cn.com/problems/lru-cache/solution/lru-ce-lue-xiang-jie-he-shi-xian-by-labuladong/) |
-|      |                                                              |                                                              |
+| 14   | [130. 被围绕的区域](https://leetcode-cn.com/problems/surrounded-regions/)<br>[200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)<br>[990. 等式方程的可满足性](https://leetcode-cn.com/problems/satisfiability-of-equality-equations/)<br> | [union-find （并查集）算法详解加应用](https://leetcode-cn.com/problems/satisfiability-of-equality-equations/solution/union-find-suan-fa-xiang-jie-jia-ying-yong-by-labu/) |
 
 
 
