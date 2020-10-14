@@ -24,9 +24,9 @@ public class UnionFind<T> {
     }
 
     public void union(UnionFind p, UnionFind q) {
-        UnionFind proot = findRoot(p);
-        UnionFind qroot = findRoot(q);
-        proot.parent = qroot;
+        UnionFind rootP = findRoot(p);
+        UnionFind rootQ = findRoot(q);
+        rootP.parent = rootQ;
     }
 
 }

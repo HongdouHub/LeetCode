@@ -3,9 +3,9 @@ package leetcode.t151_200.t200_IsLands.union_find;
 public class QuickUnionFind {
     private int[] roots;
 
-    public QuickUnionFind(int N) {
-        this.roots = new int[N];
-        for (int i = 0; i < N; i++) {
+    public QuickUnionFind(int n) {
+        this.roots = new int[n];
+        for (int i = 0; i < n; i++) {
             roots[i] = i;
         }
     }
@@ -27,8 +27,8 @@ public class QuickUnionFind {
     }
 
     public void union(int p, int q) {
-        int proot = findRoot(p);
-        int qroot = findRoot(q);
-        roots[proot] = qroot;
+        int rootP = findRoot(p);
+        int rootQ = findRoot(q);
+        roots[rootP] = rootQ;
     }
 }

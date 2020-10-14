@@ -17,8 +17,8 @@ import static leetcode.preparation.treenode.PrepareTreeNode.generate;
 public class CountNodes {
 
     public static void main(String[] args) {
-        System.out.println(countNodes1(generate(new Integer[] {1, 2, 3, 4, 5, 6})));
-        System.out.println(countNodes2(generate(new Integer[] {1, 2, 3, 4, 5, 6})));
+        System.out.println(countNodes1(generate(1, 2, 3, 4, 5, 6)));
+        System.out.println(countNodes2(generate(1, 2, 3, 4, 5, 6)));
     }
 
     /**

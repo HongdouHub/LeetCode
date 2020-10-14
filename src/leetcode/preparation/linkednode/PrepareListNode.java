@@ -93,4 +93,37 @@ public class PrepareListNode {
 
         return prev;
     }
+
+    public static ListNode reverseList(ListNode head, int startIndex, int endIndex) {
+
+        int index = 1;
+        ListNode current = head;
+        ListNode titleNode = null; // startNode前面节点
+
+        while (index != startIndex) {
+            titleNode = current;
+            current = current.next;
+            index++;
+        }
+
+        ListNode startNode = current;
+        ListNode prev = null;
+        ListNode next = null;
+
+        while (current != null && index != (endIndex + 1)) {
+
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+            index++;
+        }
+
+        startNode.next = current;
+        if (titleNode != null) {
+            titleNode.next = prev;
+        }
+
+        return startIndex != 1 ? head : prev;
+    }
 }

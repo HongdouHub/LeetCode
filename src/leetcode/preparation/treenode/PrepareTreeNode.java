@@ -8,7 +8,7 @@ public class PrepareTreeNode {
     /**
      * 生成二叉树
      */
-    public static TreeNode generate(Integer[] array) {
+    public static TreeNode generate(Integer... array) {
         if (array == null) return null;
         return createBinaryTreeByArray(array, 0);
     }
@@ -29,7 +29,7 @@ public class PrepareTreeNode {
     /**
      * 生成二叉搜索树
      */
-    public static TreeNode generateBST(Integer[] array) {
+    public static TreeNode generateBST(Integer... array) {
         if (array == null) return null;
         TreeNode result = null;
 

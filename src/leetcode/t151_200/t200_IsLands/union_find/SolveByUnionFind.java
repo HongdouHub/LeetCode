@@ -1,11 +1,18 @@
 package leetcode.t151_200.t200_IsLands.union_find;
 
-import leetcode.t151_200.t200_IsLands.IsLands;
-
 /**
  * 并查集
  */
-public class SolveByUnionFind extends IsLands {
+public class SolveByUnionFind {
+
+    private static int[][] getLandData() {
+        return new int[][]{
+                new int[]{1, 1, 0, 0},
+                new int[]{1, 1, 0, 0},
+                new int[]{0, 0, 1, 0},
+                new int[]{0, 0, 0, 1}
+        };
+    }
 
     public static void main(String[] args) {
         int[][] landData = getLandData();
