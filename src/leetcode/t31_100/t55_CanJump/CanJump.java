@@ -23,20 +23,10 @@ import leetcode.preparation.MethodBuilder;
 @SuppressWarnings("all")
 public class CanJump {
 
-    private static final int[] TEST = new int[]{
-            8, 2, 4, 4, 4, 9, 5, 2, 5, 8, 8, 0,
-            8, 6, 9, 1, 1, 6, 3, 5, 1, 2, 6, 6,
-            0, 4, 8, 6, 0, 3, 2, 8, 7, 6, 5, 1,
-            7, 0, 3, 4, 8, 3, 5, 9, 0, 4, 0, 1,
-            0, 5, 9, 2, 0, 7, 0, 2, 1, 0, 8, 2,
-            5, 1, 2, 3, 9, 7, 4, 7, 0, 0, 1, 8,
-            5, 6, 7, 5, 1, 9, 9, 3, 5, 0, 7, 5
-    };
-
     public static void main(String[] args) {
         test("canJump1");
         test("canJump2");
-//        test("canJump3");
+        test("canJump3");
     }
 
     private static void test(String methodName) {
@@ -49,10 +39,20 @@ public class CanJump {
         System.out.println(String.format("----------%s---------", methodName));
         System.out.println(build.invoke(new int[]{2, 3, 1, 1, 4}));         // true
         System.out.println(build.invoke(new int[]{3, 2, 1, 0, 4}));         // false
-        System.out.println(build.invoke(TEST));                             // false
+//        System.out.println(build.invoke(TEST));                             // false
         System.out.println(build.invoke(new int[]{1, 1, 1, 0, 4, 5, 6}));   // false
         System.out.println("---------------------------\n");
     }
+
+    private static final int[] TEST = new int[] {
+            8, 2, 4, 4, 4, 9, 5, 2, 5, 8, 8, 0,
+            8, 6, 9, 1, 1, 6, 3, 5, 1, 2, 6, 6,
+            0, 4, 8, 6, 0, 3, 2, 8, 7, 6, 5, 1,
+            7, 0, 3, 4, 8, 3, 5, 9, 0, 4, 0, 1,
+            0, 5, 9, 2, 0, 7, 0, 2, 1, 0, 8, 2,
+            5, 1, 2, 3, 9, 7, 4, 7, 0, 0, 1, 8,
+            5, 6, 7, 5, 1, 9, 9, 3, 5, 0, 7, 5
+    };
 
     /**
      * 贪心算法
@@ -117,6 +117,7 @@ public class CanJump {
 
         return dfs(nums, 0, length);
     }
+
     private static boolean dfs(int[] nums, int currentIndex, int length) {
         if (currentIndex >= length - 1) {
             return true;

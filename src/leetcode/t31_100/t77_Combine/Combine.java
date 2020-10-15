@@ -30,8 +30,8 @@ public class Combine {
     /**
      * 回溯算法
      *
-     * 时间复杂度：O()
-     * 空间复杂度：O()
+     * 时间复杂度：O(n * k)
+     * 空间复杂度：O(n)
      */
     private static List<List<Integer>> combine(int n, int k) {
         if (k > n || k <= 0) {

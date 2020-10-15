@@ -39,7 +39,7 @@ public class Merge {
      * 排序 + 双指针
      *
      * 时间复杂度：O(n · log n)
-     * 空间复杂度：O(log n)
+     * 空间复杂度：O(n)
      */
     private static int[][] merge(int[][] intervals) {
         int length;

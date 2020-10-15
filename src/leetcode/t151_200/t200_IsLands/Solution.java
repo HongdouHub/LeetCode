@@ -23,13 +23,12 @@ public class Solution {
 
     private static void test(INumIslands numIslands) {
         System.out.println(String.format("----------%s---------", numIslands.getClass().getSimpleName()));
-
-//        println(numIslands.numIslands(new char[][]{
-//                new char[]{'1', '1', '0', '0'},
-//                new char[]{'1', '1', '0', '0'},
-//                new char[]{'0', '0', '1', '0'},
-//                new char[]{'0', '0', '0', '1'}
-//        }));
+        println(numIslands.numIslands(new char[][]{
+                new char[]{'1', '1', '0', '0'},
+                new char[]{'1', '1', '0', '0'},
+                new char[]{'0', '0', '1', '0'},
+                new char[]{'0', '0', '0', '1'}
+        }));
 
         println(numIslands.numIslands(new char[][]{
                 new char[]{'1'}
