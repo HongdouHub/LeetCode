@@ -59,7 +59,9 @@ public class SuperEggDrop3 extends AbstractSuperEggDrop {
             for (int j = 2; j < K + 1; j++) {
 
                 for (int k = 1; k < i; k++) {
+                    // 求最少实验次数
                     dp[i][j] = Math.min(dp[i][j],
+                            // 最坏情况下扔鸡蛋的次数
                             Math.max(
                                     dp[i - k][j],       // 没碎
                                     dp[k - 1][j - 1]    // 碎了

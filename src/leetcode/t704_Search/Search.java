@@ -10,7 +10,7 @@ package leetcode.t704_Search;
 public class Search {
 
     public static void main(String[] args) {
-        System.out.println(search(new int[] {-1,0,3,5,9,12}, 9));   // 4
+        System.out.println(search(new int[] {-1,0,3,5,9,12}, 9));   //  4
         System.out.println(search(new int[] {-1,0,3,5,9,12}, 2));   // -1
     }
 

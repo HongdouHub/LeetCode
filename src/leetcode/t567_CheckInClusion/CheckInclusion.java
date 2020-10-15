@@ -23,8 +23,8 @@ import java.util.Map;
 public class CheckInclusion {
 
     public static void main(String[] args) {
-//        test("checkInclusion1");
-//        test("checkInclusion2");
+        test("checkInclusion1");
+        test("checkInclusion2");
         test("checkInclusion3");
     }
 
@@ -36,8 +36,8 @@ public class CheckInclusion {
                 .build();
 
         System.out.println(String.format("-------------%s------------", methodName));
-//        System.out.println(build.invoke("ab", "eidbaooo")); // True
-//        System.out.println(build.invoke("ab", "eidboaoo")); // False
+        System.out.println(build.invoke("ab", "eidbaooo")); // True
+        System.out.println(build.invoke("ab", "eidboaoo")); // False
         System.out.println(build.invoke("hello", "ooolleoooleh"));  // False
         System.out.println("----------------------------------------\n");
     }
@@ -153,54 +153,6 @@ public class CheckInclusion {
                 return true;
             }
         }
-        return false;
-    }
-
-    /**
-     *
-     */
-    private static boolean checkInclusion3(String s1, String s2) {
-        int len1;
-        int len2;
-
-        if (s1 == null || (len1 = s1.length()) == 0 ||
-                s2 == null || (len2 = s2.length()) == 0) {
-            return false;
-        }
-
-        Map<Integer, Integer> keyMap = new HashMap<>();
-        for (int i = 0; i < len1; i++) {
-            int c = s1.charAt(i) - 'a';
-            keyMap.put(c, keyMap.getOrDefault(c, 0) + 1);
-        }
-
-        Map<Integer, Integer> traversalMap = new HashMap<>();
-        int matchCount = 0;
-        for (int i = 0; i < len2; i++) {
-            int c = s2.charAt(i) - 'a';
-
-            if (!keyMap.containsKey(c)) {
-                traversalMap.clear();
-                matchCount = 0;
-                continue;
-            }
-
-            traversalMap.put(c, traversalMap.getOrDefault(c, 0) + 1);
-            matchCount++;
-
-            if (keyMap.get(c) < traversalMap.get(c)) {
-                matchCount--;
-                int remove = s2.charAt(i - matchCount) - 'a';
-                traversalMap.put(remove, traversalMap.getOrDefault(remove, 0) - 1);
-                continue;
-            }
-
-            if (matchCount == len1) {
-                return true;
-            }
-
-        }
-
         return false;
     }
 }

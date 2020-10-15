@@ -56,7 +56,7 @@ public class FindErrorNums {
      * 排序法 - 11 ms / 40 MB
      *
      * 时间复杂度：O(n · log n)
-     * 空间复杂度：O(log n)
+     * 空间复杂度：O(1)
      */
     private static int[] findErrorNums1(int[] nums) {
         int length;
@@ -160,7 +160,7 @@ public class FindErrorNums {
         int missing = -1;
 
         for (int i = 0; i < length; i++) {
-            // 数据范围： [1, n];
+            // 数据范围： [1, n]
             // 下标范围： [0, n - 1]
             int index = Math.abs(nums[i])  - 1;
 

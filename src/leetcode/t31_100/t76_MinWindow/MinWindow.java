@@ -49,7 +49,7 @@ public class MinWindow {
             tMap.put(c, tMap.getOrDefault(c, 0) + 1);
         }
 
-        int end = Integer.MAX_VALUE;
+        int minLength = Integer.MAX_VALUE;
         int start = -1;
 
         int left = 0;
@@ -67,10 +67,10 @@ public class MinWindow {
 
             // 遍历，右边界右滑已经保证当前窗口已经包含子串，这次是左边界向左移，求最小窗口值
             while (right - left >= tLen && check(tMap, windows)) {
-                if (end > right - left) {
+                if (minLength > right - left) {
 //                    System.out.println("left: " + left + ", right: " + right);
                     start = left;
-                    end = right - left;
+                    minLength = right - left;
                 }
 
                 // 缩小窗口
@@ -84,7 +84,7 @@ public class MinWindow {
             }
         }
 
-        return start == -1 ? "" : s.substring(start, start + end);
+        return start == -1 ? "" : s.substring(start, start + minLength);
     }
 
     private static boolean check(Map<Character, Integer> tMap,

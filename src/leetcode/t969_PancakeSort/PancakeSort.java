@@ -88,7 +88,6 @@ public class PancakeSort {
     }
 
     private static int findMaxIndex(int[] arr, int index) {
-
         int maxIndex = 0;
 
         for (int i = 1; i <= index; i++) {

@@ -1,4 +1,4 @@
-package leetcode.t101_150.t121_122_123_309_188_714_GuPiao.t121_122_123_188;
+package leetcode.t101_150.t121_122_123_309_188_714_GuPiao.comm;
 
 public class CommMethod {
 
