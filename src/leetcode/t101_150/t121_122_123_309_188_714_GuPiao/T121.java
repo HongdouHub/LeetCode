@@ -1,6 +1,6 @@
 package leetcode.t101_150.t121_122_123_309_188_714_GuPiao;
 
-import leetcode.t101_150.t121_122_123_309_188_714_GuPiao.comm.CommMethod;
+import static utils.ConsoleUtils.println;
 
 /**
  * 121. 买卖股票的最佳时机 - 最多只允许完成一笔交易
@@ -26,28 +26,76 @@ public class T121 {
     public static void main(String[] args) {
         int[] raw = new int[] {7, 1, 5, 3, 6, 4};
 
-        System.out.println(CommMethod.calMaxProfit(raw, 1));
-        System.out.println(calMaxProfit(raw));
-//        System.out.println(CommMethod.calMaxProfit(raw, 1));
+        println(calMaxProfit1(raw));
+        println(calMaxProfit2(raw));
+        println(SuperGuPiao.calMaxProfit(raw, 1));
     }
 
-    private static int calMaxProfit(int[] prices) {
-        if (prices == null || prices.length == 0) return 0;
+    /**
+     * 一次遍历 - 【1ms(98.99%) : 38MB(99.90%)】
+     *
+     * 时间复杂度：O(n)，遍历了一遍数组。
+     * 空间复杂度：O(1)，使用了有限的变量。
+     */
+    private static int calMaxProfit1(int[] prices) {
+        int length;
+        if (prices == null || (length = prices.length) == 0) {
+            return 0;
+        }
 
         int minValue = prices[0];
         int result = 0;
 
-        for (int price : prices) {
-            if (minValue > price) {
-                minValue = price;
-            }
+        for (int i = 0; i < length; i++) {
 
-            System.out.println("比较前：" + result);
-            if (result < price - minValue) {
-                result = price - minValue;
+            if (prices[i] < minValue) {
+                minValue = prices[i];
+            } else if (prices[i] > minValue) {
+                result = Math.max(result, prices[i] - minValue);
             }
-            System.out.println("比较后：" + result);
-            System.out.println();
+        }
+        return result;
+    }
+
+    /**
+     * 动态规划 - 【6ms(20.80%) : 39.9MB(5.28%)】
+     * 时间复杂度：O(n)，遍历了一遍数组。
+     * 空间复杂度：O(n)
+     */
+    private static int calMaxProfit2(int[] prices) {
+        int length;
+        if (prices == null || (length = prices.length) == 0) {
+            return 0;
+        }
+
+        // 1. 状态定义： dp[i][j] 表示第 i 天，当前在（保持未买/买入/卖出）下获得的最大利润
+        int[][] dp = new int[length][3];
+
+        // 2. 初始化状态
+        dp[0][0] = 0;               // 保持未买
+        dp[0][1] = -prices[0];      // 买入
+        dp[0][2] = 0;               // 卖出
+
+        int result = 0;
+
+        // 3. 思考状态转移方程
+        for (int i = 1; i < length; i++) {
+
+            dp[i][0] = dp[i - 1][0];
+            dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
+            dp[i][2] = Math.max(dp[i - 1][2], dp[i - 1][1] + prices[i]);
+
+            result = max(result, dp[i][0], dp[i][1], dp[i][2]);
+        }
+
+        return result;
+    }
+
+    private static int max(int... data) {
+        int length = data.length;
+        int result = Integer.MIN_VALUE;
+        for (int i = 0; i < length; i++) {
+            result = Math.max(result, data[i]);
         }
         return result;
     }
