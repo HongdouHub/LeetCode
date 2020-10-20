@@ -1,5 +1,7 @@
 package leetcode.t101_150.t121_122_123_309_188_714_GuPiao;
 
+import leetcode.preparation.MethodBuilder;
+
 import static utils.ConsoleUtils.println;
 
 /**
@@ -34,23 +36,47 @@ import static utils.ConsoleUtils.println;
 public class T123 {
 
     public static void main(String[] args) {
-        println(calMaxProfit(new int[] {3,3,5,0,0,3,1,4}, 2));  // 3 + 3 = 6
-        println(calMaxProfit(new int[] {1,2,3,4,5}, 2));        // 4
-        println(calMaxProfit(new int[] {7,6,4,3,1}, 2));        // 0
-        println(calMaxProfit(new int[] {7,1,5,3,6,4}, 2));      // 4 + 3 = 7
+        test(T123.class, "calMaxProfit");
+        test(SuperGuPiao.class, "calMaxProfit");
+    }
+
+    private static void test(Class clazz, String methodName) {
+        Object o = null;
+        try {
+            o = clazz.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        MethodBuilder builder = new MethodBuilder.Builder()
+                .setClazz(clazz)
+                .setObject(o)
+                .setParameterTypes(new Class[]{int[].class, int.class})
+                .setMethodName(methodName)
+                .build();
+
+        println(String.format("----------%s---------", methodName));
+        println(builder.invoke(new int[] {3,3,5,0,0,3,1,4}, 2));  // 3 + 3 = 6
+        println(builder.invoke(new int[] {1,2,3,4,5}, 2));        // 4
+        println(builder.invoke(new int[] {7,6,4,3,1}, 2));        // 0
+        println(builder.invoke(new int[] {7,1,5,3,6,4}, 2));      // 4 + 3 = 7
+        println(builder.invoke(new int[] {1,2,4,2,5,7,2,4,9}, 2));// 6 + 7 = 13
+        println("---------------------------\n");
     }
 
     private static int calMaxProfit(int[] prices, int times) {
-        int size;
-        if (prices == null || (size = prices.length) == 0) return 0;
+        int length;
+        if (prices == null || (length = prices.length) == 0) {
+            return 0;
+        }
 
         int maxProfit = 0;
-        int[][] mp = new int[times + 1][size];
+        int[][] mp = new int[times + 1][length];
 
         for (int time = 1; time <= times; time++) {
             int tempMax = mp[time - 1][0] - prices[0];
 
-            for (int i = 1; i < size; i++) {
+            for (int i = 1; i < length; i++) {
                 mp[time][i] = Math.max(mp[time][i - 1], tempMax + prices[i]);
                 tempMax = Math.max(tempMax, mp[time - 1][i] - prices[i]);
                 maxProfit = Math.max(mp[time][i], maxProfit);
@@ -58,5 +84,4 @@ public class T123 {
         }
         return maxProfit;
     }
-
 }

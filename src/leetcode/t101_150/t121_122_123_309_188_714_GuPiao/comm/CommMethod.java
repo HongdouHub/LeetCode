@@ -7,23 +7,24 @@ public class CommMethod {
         System.out.println(calMaxProfit(raw, 2));
     }
 
-
     public static int calMaxProfit(int[] prices, int times) {
-        int size = 0;
-        if (prices == null || (size = prices.length) == 0) return 0;
+        int length;
+        if (prices == null || (length = prices.length) == 0) {
+            return 0;
+        }
 
         // max_profit[i][j][k]
         // i : 数组长度为 i
         // j : 当前交易了 j 次（买入和卖出）
         // k : 当前是否持有股票（0：没有股票； 1：持有股票）
-        int[][][] mp = new int[size][times][2];
+        int[][][] mp = new int[length][times][2];
 
         mp[0][0][0] = 0;
         mp[0][0][1] = -prices[0];
         mp[1][0][0] = 0;
         mp[1][0][1] = -prices[1];
 
-        for (int i = 1; i < size; i++) {
+        for (int i = 1; i < length; i++) {
             for (int j = 1; j < times; j++) {
                 for (int k = 0; k < 2; k++) {
 
@@ -39,10 +40,10 @@ public class CommMethod {
             }
         }
 
-        int maxValue = mp[size - 1][0][0];
+        int maxValue = mp[length - 1][0][0];
         for (int j = 0; j < times; j++) {
-            if (maxValue < mp[size - 1][j][0]) {
-                maxValue = mp[size - 1][j][0];
+            if (maxValue < mp[length - 1][j][0]) {
+                maxValue = mp[length - 1][j][0];
             }
         }
         return maxValue;
