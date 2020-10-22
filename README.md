@@ -156,9 +156,9 @@ This repository is to record some leetcode's study experience.
 | 108  | [18. 四数之和](https://leetcode-cn.com/problems/4sum/)       | 排序后，左右指针两边夹                             | 时/空 - O(n^3) / O(1)                                 |
 | 109  | [19. 删除链表的倒数第N个节点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/) | 快慢指针                                           | 时/空 - O(n) / O(1)                                   |
 | 110  | [21. 合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/) | 归并排序<br>递归求解                               | 时/空 - O(m+n) / O(m+n)<br>时/空 - O(m+n) / O(1)      |
-|      |                                                              |                                                    |                                                       |
-|      |                                                              |                                                    |                                                       |
-|      |                                                              |                                                    |                                                       |
-|      |                                                              |                                                    |                                                       |
-|      |                                                              |                                                    |                                                       |
+| 111  | [23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/) | 分治-链表两两合并<br>优先级队列                    | 时/空 - O(m+n) / O(m+n)<br>时/空 - O(nlogk) / O(1)    |
+| 112  | [24. 两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs/) | 非递归解法<br>递归解法                             | 时/空 - O(n) / O(1)<br>时/空 - O(n) / O(1)            |
+| 113  | [27. 移除元素](https://leetcode-cn.com/problems/remove-element/) | 拷贝覆盖                                           | 时/空 - O(n) / O(1)                                   |
+| 114  | [29. 两数相除](https://leetcode-cn.com/problems/divide-two-integers/) | 负数累加计数，排除正数溢出问题                     |                                                       |
+| 115  | [30. 串联所有单词的子串](https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/) | 哈希表                                             | 时/空 - O(mn) / O(mn)                                 |
 

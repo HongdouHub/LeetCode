@@ -1,10 +1,12 @@
 package leetcode.t21_t30.t23_MergeKLists;
 
 import leetcode.preparation.linkednode.ListNode;
-import leetcode.preparation.linkednode.PrepareListNode;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
+
+import static leetcode.preparation.linkednode.PrepareListNode.generate;
+import static leetcode.preparation.linkednode.PrepareListNode.print;
 
 /**
  * 23. 合并K个排序链表
@@ -23,11 +25,8 @@ import java.util.PriorityQueue;
 public class MergeKLists {
 
     public static void main(String[] args) {
-        ListNode node1 = PrepareListNode.generate(new Integer[]{1, 4, 5});
-        ListNode node2 = PrepareListNode.generate(new Integer[]{1, 3, 4});
-        ListNode node3 = PrepareListNode.generate(new Integer[]{2, 6});
-        PrepareListNode.print(mergeKLists1(new ListNode[]{node1, node2, node3}));
-        PrepareListNode.print(mergeKLists2(new ListNode[]{node1, node2, node3}));
+        print(mergeKLists1(new ListNode[]{generate(1, 4, 5), generate(1, 3, 4), generate(2, 6)}));
+        print(mergeKLists2(new ListNode[]{generate(1, 4, 5), generate(1, 3, 4), generate(2, 6)}));
     }
 
     /**
@@ -49,7 +48,7 @@ public class MergeKLists {
             return lists[left];
         }
 
-        int middle = (left + right) >> 1;
+        int middle = left + ((right - left) >> 1);
 
         ListNode l1 = merge(lists, left, middle);
         ListNode l2 = merge(lists, middle + 1, right);
@@ -84,9 +83,7 @@ public class MergeKLists {
         PriorityQueue<ListNode> queue = new PriorityQueue<>(length, new Comparator<ListNode>() {
             @Override
             public int compare(ListNode o1, ListNode o2) {
-                if (o1.val < o2.val) return -1;
-                else if (o1.val == o2.val) return 0;
-                else return 1;
+                return o1.val - o2.val;
             }
         });
 

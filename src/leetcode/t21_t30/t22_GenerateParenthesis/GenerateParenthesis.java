@@ -24,6 +24,15 @@ import java.util.Queue;
  */
 public class GenerateParenthesis {
 
+    /**
+     * 传入 n 计算出 n 组括号对应的不同合法组合
+     *
+     * 组合大小： 2 * n
+     * 每个位置均有 ( 或 ) 选择，对应有 2 ^ 2n 的可能性：
+     *   校验合法时，有如下改进：—— O(2^n)
+     *      1、 局部不合法，不再递归
+     *      2、 左括号只能有 n 个，右括号也只能有 n 个
+     */
     public static void main(String[] args) {
         System.out.println(GsonUtil.array2Json(generateParenthesis1(3)));
         System.out.println(GsonUtil.array2Json(generateParenthesis2(3)));

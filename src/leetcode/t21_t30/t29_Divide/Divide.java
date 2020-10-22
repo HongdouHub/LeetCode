@@ -34,7 +34,7 @@ public class Divide {
             sign = -1;
         }
 
-        // 都改为负号是因为int 的范围是[2^32, 2^32-1]，如果a是-2^32，转为正数时将会溢出
+        // 都改为负号是因为int 的范围是[-2^32, 2^32-1]，如果a是-2^32，转为正数时将会溢出
         int a = dividend > 0 ? -dividend : dividend;
         int b = divisor > 0 ? -divisor : divisor;
 

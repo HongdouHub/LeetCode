@@ -16,7 +16,7 @@ public class AddTwoNumbers {
 
     public static void main(String[] args) {
         ListNode l1 = PrepareListNode.generate(new Integer[] {1});
-        ListNode l2 = PrepareListNode.generate(new Integer[] {9, 9});
+        ListNode l2 = PrepareListNode.generate(new Integer[] {9, 8});
 
         ListNode listNode = addTwoNumbers(l1, l2);
         PrepareListNode.print(listNode);

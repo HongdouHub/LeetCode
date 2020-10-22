@@ -25,6 +25,12 @@ public class IsMatch {
         System.out.println(isMatch2("", ".*"));
     }
 
+    /**
+     * 动态规划
+     *
+     * 时间复杂度：O(mn)
+     * 空间复杂度：O(mn)
+     */
     private static boolean isMatch(String s, String p) {
         if (s == null || p == null) {
             return false;

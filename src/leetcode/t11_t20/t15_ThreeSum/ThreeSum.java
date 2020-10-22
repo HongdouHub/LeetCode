@@ -1,5 +1,6 @@
 package leetcode.t11_t20.t15_ThreeSum;
 
+import leetcode.preparation.MethodBuilder;
 import utils.GsonUtil;
 
 import java.util.*;
@@ -20,6 +21,7 @@ import java.util.*;
  *   [-1, -1, 2]
  * ]
  */
+@SuppressWarnings("all")
 public class ThreeSum {
 
     public static void main(String[] args) {
@@ -28,12 +30,42 @@ public class ThreeSum {
 
 //        int[] nums = new int[] {-1, 0, 1, 2, -1, -4};
 //        int[] nums = new int[] {0, 0, 0};
-        int[] nums = TestData.TEST_DATA;
-        int target = 0;
 
-        List<List<Integer>> result = threeSum2(nums, target);
-        System.out.println(GsonUtil.array2Json(result));
+
+//        int[] nums = TestData.TEST_DATA;
+//        int target = 0;
+//
+//        List<List<Integer>> result1;
+//        List<List<Integer>> result2;
+//
+//        result1 = threeSum1(nums, target);
+//        System.out.println(GsonUtil.array2Json(result1));
+//
+//        System.out.println("\n-------------------\n");
+//
+//        result2 = threeSum2(nums, target);
+//        System.out.println(GsonUtil.array2Json(result2));
+//
+//        System.out.println(result1.equals(result2));
+
+//        test("threeSum1");
+        test("threeSum2");
     }
+
+    private static void test(String methodName) {
+        MethodBuilder builder = new MethodBuilder.Builder()
+                .setClazz(ThreeSum.class)
+                .setMethodName(methodName)
+                .setParameterTypes(new Class[]{int[].class, int.class})
+                .build();
+
+        System.out.println(String.format("----------%s---------", methodName));
+        System.out.println(GsonUtil.array2Json((List<List<Integer>>) builder.invoke(new int[]{2, 7, 11, 15}, 20)));
+        System.out.println(GsonUtil.array2Json((List<List<Integer>>) builder.invoke(new int[]{-1, 0, 1, 2, -1, -4}, 0)));
+        System.out.println(GsonUtil.array2Json((List<List<Integer>>) builder.invoke(TestData.TEST_DATA, 0)));
+        System.out.println("---------------------------\n");
+    }
+
 
     /**
      * HashMap登记式
@@ -56,7 +88,11 @@ public class ThreeSum {
                 int thirdAddend = target - nums[i] - nums[j];
 
                 if (recordMap.containsKey(thirdAddend)) {
-                    result.add(Arrays.asList(nums[i], nums[j], thirdAddend));
+                    List<Integer> temp = Arrays.asList(nums[i], nums[j], thirdAddend);
+                    Collections.sort(temp);
+                    if (!result.contains(temp)) {
+                        result.add(temp);
+                    }
                 }
                 recordMap.put(nums[j], j);
             }
