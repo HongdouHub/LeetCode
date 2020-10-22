@@ -90,15 +90,15 @@ public class Multiply {
         }
 
         int[] result = new int[len1 + len2];
-        int number1, number2;
+        int bit1, bit2;
 
         for (int i = len1 - 1; i >= 0; i--) {
-            number1 = num1.charAt(i) - '0';
+            bit1 = num1.charAt(i) - '0';
 
             for (int j = len2 - 1; j >= 0; j--) {
-                number2 = num2.charAt(j) - '0';
+                bit2 = num2.charAt(j) - '0';
 
-                int sum = result[i + j + 1] + number1 * number2;
+                int sum = result[i + j + 1] + bit1 * bit2;
                 result[i + j + 1] = sum % 10;
                 result[i + j] += sum / 10;
             }

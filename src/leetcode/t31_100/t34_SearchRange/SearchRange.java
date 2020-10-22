@@ -1,9 +1,5 @@
 package leetcode.t31_100.t34_SearchRange;
 
-import utils.GsonUtil;
-
-import java.util.Arrays;
-
 /**
  * 34. 在排序数组中查找元素的第一个和最后一个位置
  * <p>
@@ -19,21 +15,13 @@ import java.util.Arrays;
 @SuppressWarnings("all")
 public class SearchRange {
 
-    public static void main(String[] args) {
-        print(searchRange(new int[]{5, 7, 7, 8, 10}, 8)); // [3,4]
-        print(searchRange(new int[]{5, 7, 7, 8, 8, 10}, 8)); // [3,4]
-        print(searchRange(new int[]{5, 7, 7, 8, 8, 10}, 6)); // [-1,-1]
-        print(searchRange(new int[]{1}, 0)); // [-1,-1]
-    }
-
-    private static void print(int[] data) {
-        System.out.println(GsonUtil.array2Json(Arrays.asList(data)));
-    }
-
     /**
-     * 二分查找 - O(n)
+     * 暴力左右指针两边夹
+     *
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(1)
      */
-    private static int[] searchRange(int[] nums, int target) {
+    public static int[] searchRange(int[] nums, int target) {
         int length;
         if (nums == null || (length = nums.length) == 0) {
             return new int[] {-1, -1};

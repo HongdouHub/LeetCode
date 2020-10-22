@@ -52,14 +52,14 @@ public class CombinationSum {
     private static void dfs(int[] nums, int sum, int target, int length,
                             List<Integer> path, List<List<Integer>> result) {
 
-        if (sum == target) {
+        if (sum > target) {
+            return;
+        } else if (sum == target) {
             List<Integer> temp = new ArrayList<>(path);
             Collections.sort(temp);
             if (!result.contains(temp)) {
                 result.add(temp);
             }
-            return;
-        } else if (sum > target) {
             return;
         }
 
