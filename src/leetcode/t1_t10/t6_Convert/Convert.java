@@ -27,9 +27,9 @@ public class Convert {
     /**
      * 暴力求解，Flag
      *
-     * 时间复杂度 O(N)O(N)O(N) ：遍历一遍字符串 s；
+     * 时间复杂度 O(N) ：遍历一遍字符串 s；
      *
-     * 空间复杂度 O(N)O(N)O(N) ：各行字符串共占用 O(N)O(N)O(N) 额外空间。
+     * 空间复杂度 O(N) ：各行字符串共占用 O(N) 额外空间。
      */
     private static String convert(String s, int numRows) {
         if(numRows < 2) return s;

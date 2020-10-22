@@ -3,6 +3,8 @@ package leetcode.t21_t30.t24_SwapPairs;
 import leetcode.preparation.linkednode.ListNode;
 import leetcode.preparation.linkednode.PrepareListNode;
 
+import static leetcode.preparation.linkednode.PrepareListNode.print;
+
 /**
  * 24. 两两交换链表中的节点
  *
@@ -15,10 +17,10 @@ import leetcode.preparation.linkednode.PrepareListNode;
 public class SwapPairs {
 
     public static void main(String[] args) {
-        PrepareListNode.print(swapPairs1(PrepareListNode.generate(new Integer[]{1, 2, 3, 4})));
-        PrepareListNode.print(swapPairs1(PrepareListNode.generate(new Integer[]{1, 2, 3, 4, 5})));
-        PrepareListNode.print(swapPairs2(PrepareListNode.generate(new Integer[]{1, 2, 3, 4})));
-        PrepareListNode.print(swapPairs2(PrepareListNode.generate(new Integer[]{1, 2, 3, 4, 5})));
+        print(swapPairs1(PrepareListNode.generate(1, 2, 3, 4)));
+        print(swapPairs1(PrepareListNode.generate(1, 2, 3, 4, 5)));
+        print(swapPairs2(PrepareListNode.generate(1, 2, 3, 4)));
+        print(swapPairs2(PrepareListNode.generate(1, 2, 3, 4, 5)));
     }
 
     /**

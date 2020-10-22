@@ -20,9 +20,9 @@ import static leetcode.preparation.linkednode.PrepareListNode.reverseList;
 public class ReverseKGroup {
 
     public static void main(String[] args) {
-        PrepareListNode.print(reverseKGroup(PrepareListNode.generate(new Integer[]{1, 2, 3}), 2));
-        PrepareListNode.print(reverseKGroup(PrepareListNode.generate(new Integer[]{1, 2, 3, 4, 5}), 2));
-        PrepareListNode.print(reverseKGroup(PrepareListNode.generate(new Integer[]{1, 2, 3, 4, 5, 6, 7}), 3));
+        PrepareListNode.print(reverseKGroup(PrepareListNode.generate(1, 2, 3), 2));
+        PrepareListNode.print(reverseKGroup(PrepareListNode.generate(1, 2, 3, 4, 5), 2));
+        PrepareListNode.print(reverseKGroup(PrepareListNode.generate(1, 2, 3, 4, 5, 6, 7), 3));
     }
 
     /**

@@ -48,7 +48,7 @@ public class LongestPalindrome {
 
         for (int i = 0; i < len - 1; i++) {
             for (int j = i + 1; j < len; j++) {
-                if (validPalindromic(charArray, i, j) && j - i + 1 > maxLen) {
+                if (j - i + 1 > maxLen && validPalindromic(charArray, i, j)) {
                     maxLen = j - i + 1;
                     begin = i;
                 }

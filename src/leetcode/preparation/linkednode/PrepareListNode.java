@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class PrepareListNode {
 
-    public static ListNode generate(Integer[] array) {
+    public static ListNode generate(Integer... array) {
         if (array == null) return null;
 
         ListNode result = null;
