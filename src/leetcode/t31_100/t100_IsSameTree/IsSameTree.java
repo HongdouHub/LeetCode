@@ -25,8 +25,8 @@ public class IsSameTree {
         System.out.println(false ^ false);
         System.out.println("-----------------");
 
-        System.out.println(isSameTree1(generate(new Integer[] {1, 2, 3}), generate(new Integer[] {1, 2, 3})));
-        System.out.println(isSameTree2(generate(new Integer[] {1, 2, 3}), generate(new Integer[] {1, 2, 3})));
+        System.out.println(isSameTree1(generate(1, 2, 3), generate(1, 2, 3)));
+        System.out.println(isSameTree2(generate(1, 2, 3), generate(1, 2, 3)));
     }
 
     /**

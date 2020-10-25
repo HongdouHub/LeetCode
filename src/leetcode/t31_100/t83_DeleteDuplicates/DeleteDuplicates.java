@@ -23,9 +23,9 @@ import static leetcode.preparation.linkednode.PrepareListNode.print;
 public class DeleteDuplicates {
 
     public static void main(String[] args) {
-        print(deleteDuplicates(generate(new Integer[] {1, 1, 2})));
-        print(deleteDuplicates(generate(new Integer[] {1, 1, 2, 3, 3})));
-        print(deleteDuplicates(generate(new Integer[] {1, 1, 1})));
+        print(deleteDuplicates(generate(1, 1, 2)));
+        print(deleteDuplicates(generate(1, 1, 2, 3, 3)));
+        print(deleteDuplicates(generate(1, 1, 1)));
     }
 
     /**

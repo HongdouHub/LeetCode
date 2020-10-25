@@ -1,15 +1,13 @@
 package leetcode.t201_250.t242_ValidAnagram;
 
 /**
- * 有效的字母异位词
+ * 242. 有效的字母异位词
  */
+@SuppressWarnings("all")
 public class ValidAnagram {
 
     public static void main(String[] args) {
-        String begin = "anagram";
-        String end = "nagaram";
-
-        System.out.println(isAnagram(begin, end));
+        System.out.println(isAnagram("anagram", "nagaram"));
     }
 
     private static boolean isAnagram(String begin, String end) {

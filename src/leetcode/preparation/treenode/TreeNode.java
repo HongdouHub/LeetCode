@@ -115,4 +115,9 @@ public class TreeNode {
             return searchBSTByDFS(root.right, val);
         }
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(val);
+    }
 }

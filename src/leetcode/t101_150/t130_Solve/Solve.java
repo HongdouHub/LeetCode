@@ -38,6 +38,7 @@ public class Solve {
 
     /**
      * 深度优先遍历
+     * 与边缘相连的O改为#，再将所有的O改为X，最后把#改为O
      *
      * 时间复杂度： O(n ^ 2)
      * 空间复杂度： O(1)
@@ -96,6 +97,11 @@ public class Solve {
 
     /**
      * 并查集
+     *
+     * 将二维坐标映射到一维，将边缘O与dummy相连，
+     * 遍历所有坐标，与四周相连一次
+     *
+     *
      */
     private static void solve2(char[][] board) {
         int len1;
@@ -132,13 +138,15 @@ public class Solve {
         for (int i = 1; i < len1 - 1; i++) {
             for (int j = 1; j < len2 - 1; j++) {
                 if (board[i][j] == '0') {
-                    uf.union((i - 1) * len2 + j, i * len2 + j);
-                    uf.union((i + 1) * len2 + j, i * len2 + j);
-                    uf.union(i * len2 + j - 1, i * len2 + j);
-                    uf.union(i * len2 + j + 1, i * len2 + j);
+                    uf.union((i - 1) * len2 + j, i * len2 + j); // 上
+                    uf.union((i + 1) * len2 + j, i * len2 + j); // 下
+                    uf.union(i * len2 + j - 1, i * len2 + j);   // 左
+                    uf.union(i * len2 + j + 1, i * len2 + j);   // 右
                 }
             }
         }
+
+        uf.print();
 
         for (int i = 1; i < len1 - 1; i++) {
             for (int j = 1; j < len2 - 1; j++) {

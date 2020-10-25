@@ -2,9 +2,9 @@ package leetcode.t31_100.t77_Combine;
 
 import utils.GsonUtil;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -41,14 +41,17 @@ public class Combine {
         List<List<Integer>> result = new ArrayList<>();
 
         // 优化，将集合改为 双端队列
-        Deque<Integer> path = new ArrayDeque<>();
+        // ArrayDeque 内部用数组实现，多用于频繁的随机访问操作
+        // LinkedList 内部用链表实现，频繁的插入、删除操作
+        Deque<Integer> path = new LinkedList<>();
 
         dfs(n, k, 1, path, result);
 
         return result;
     }
 
-    private static void dfs(int n, int k, int index, Deque<Integer> path, List<List<Integer>> result) {
+    private static void dfs(int n, int k, int index,
+                            Deque<Integer> path, List<List<Integer>> result) {
 
         if (k <= path.size()) {
             result.add(new ArrayList<>(path));

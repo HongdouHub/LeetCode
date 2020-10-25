@@ -33,7 +33,7 @@ public class Solution {
         MethodBuilder builder = new MethodBuilder.Builder()
                 .setClazz(clazz)
                 .setMethodName(methodName)
-                .setParameterTypes(new Class[]{int[].class, int.class})
+                .setParameterTypes(int[].class, int.class)
                 .build();
 
         System.out.println(String.format("-------------%s------------", methodName));

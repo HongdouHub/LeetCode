@@ -20,8 +20,8 @@ import static leetcode.preparation.linkednode.PrepareListNode.print;
 public class ReverseBetween {
 
     public static void main(String[] args) {
-        print(reverseBetween(generate(new Integer[]{1, 2, 3, 4, 5}), 2, 4));
-        print(reverseBetween(generate(new Integer[]{3, 5}), 1, 2));
+        print(reverseBetween(generate(1, 2, 3, 4, 5), 2, 4));
+        print(reverseBetween(generate(3, 5), 1, 2));
     }
 
     private static ListNode reverseBetween(ListNode head, int m, int n) {

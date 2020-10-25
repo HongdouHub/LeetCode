@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * 二叉树层级遍历
+ * 102. 二叉树的层序遍历
  *
  * 1. 广度优先遍历
  * 2. 深度优先遍历
@@ -23,48 +23,15 @@ public class BinaryTreeLevelOrder {
             return;
         }
 
-        List<List<Integer>> bfsList = solveByBFS(node);
-        printData(bfsList);
-
-        List<List<Integer>> dfsList = solveByDFS(node);
-        printData(dfsList);
+        printData(solveByDFS(node));
+        printData(solveByBFS(node));
     }
 
     /**
-     * 广度优先遍历
-     */
-    private static List<List<Integer>> solveByBFS(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<>();
-        if (root == null) {
-            return result;
-        }
-
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-
-        // visited = new HashSet(root); 用于记录是否被访问过
-
-        int levelSize;
-        List<Integer> currentLevel;
-        TreeNode node;
-        while (!queue.isEmpty()) {
-            levelSize = queue.size();
-            currentLevel = new ArrayList<>();
-
-            for (int i = 0; i < levelSize; i++) {
-                if ((node = queue.poll()) != null) {
-                    currentLevel.add(node.val);
-                    if (node.left != null) queue.add(node.left);
-                    if (node.right != null) queue.add(node.right);
-                }
-            }
-            result.add(currentLevel);
-        }
-        return result;
-    }
-
-    /**
-     * 深度优先遍历
+     * 深度优先遍历 - 【0ms(100.00% - 38.6MB(94.26%))】
+     *
+     * 时间复杂度： O(n)
+     * 空间复杂度： O(log n)
      */
     private static List<List<Integer>> solveByDFS(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
@@ -86,6 +53,40 @@ public class BinaryTreeLevelOrder {
 
         dfs(root.left, level + 1, result);
         dfs(root.right, level + 1, result);
+    }
+
+    /**
+     * 广度优先遍历 - 【1ms(92.95% - 38.6MB(94.26%))】
+     *
+     * 时间复杂度： O(n)
+     * 空间复杂度： O(log n)
+     */
+    private static List<List<Integer>> solveByBFS(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        int levelSize;
+        List<Integer> currentLevel;
+        TreeNode node;
+        while (!queue.isEmpty()) {
+            levelSize = queue.size();
+            currentLevel = new ArrayList<>();
+
+            for (int i = 0; i < levelSize; i++) {
+                if ((node = queue.poll()) != null) {
+                    currentLevel.add(node.val);
+                    if (node.left != null) queue.add(node.left);
+                    if (node.right != null) queue.add(node.right);
+                }
+            }
+            result.add(currentLevel);
+        }
+        return result;
     }
 
     private static void printData(List<List<Integer>> data) {

@@ -11,6 +11,16 @@ public class Test {
         test2(new Twitter());
     }
 
+    /**
+     * #postTweet(int userId, int tweetId)
+     *
+     * #getNewsFeed(int userId)
+     *
+     * #follow(int followerId, int followeeId)
+     *
+     * unfollow(int followerId, int followeeId)
+     */
+
     private static void test1(ITwitter twitter) {
         twitter.postTweet(1, 1);
         twitter.postTweet(1, 2);
@@ -24,18 +34,16 @@ public class Test {
         twitter.postTweet(1, 10);
         twitter.postTweet(1, 11);
         twitter.postTweet(1, 12);
-        List<Integer> res1 = twitter.getNewsFeed(1);
-        System.out.println(GsonUtil.array2Json(res1));
+
+        getNewsFeed(twitter, 1);
 
         twitter.follow(2, 1);
-
-        List<Integer> res2 = twitter.getNewsFeed(2);
-        System.out.println(GsonUtil.array2Json(res2));
+        getNewsFeed(twitter, 2);
 
         twitter.unfollow(2, 1);
 
-        List<Integer> res3 = twitter.getNewsFeed(2);
-        System.out.println(GsonUtil.array2Json(res3));
+        getNewsFeed(twitter, 2);
+        System.out.println("-------------------------");
     }
 
     private static void test2(ITwitter twitter) {

@@ -5,31 +5,30 @@ import java.util.Map;
 
 public class LRUCache<T> implements Cache<T> {
 
-    private Map<Integer, Node> mMap;
-    private int capacity;
-    private int size;
-    private Node<T> head;
-    private Node<T> tail;
+    private int mSize;
+    private Map<Integer, Node<T>> mMap;
+    private int mCapacity;
+    private Node<T> mHeadNode;
+    private Node<T> mTailNode;
 
     public LRUCache(int capacity) {
-        this.capacity = capacity;
-        this.mMap = new HashMap<Integer, Node>();
-        this.size = 0;
+        this.mCapacity = capacity;
+        this.mMap = new HashMap<Integer, Node<T>>();
+        this.mSize = 0;
     }
 
-    @SuppressWarnings("unchecked")
+    @Override
     public T get(int key) {
         Node<T> node;
         if ((node = mMap.get(key)) != null) {
-            T t = node.item;
             remove(node);
             addFirst(node);
-            return t;
+            return node.item;
         }
         return null;
     }
 
-    @SuppressWarnings("unchecked")
+    @Override
     public void put(int key, T t) {
         Node<T> node;
         if ((node = mMap.get(key)) != null) {
@@ -37,60 +36,61 @@ public class LRUCache<T> implements Cache<T> {
             remove(node);
             addFirst(node);
         } else {
-            node = new Node<T>(key, null, null, t);
+            node = new Node<>(key, null, null, t);
             mMap.put(key, node);
 
-            if (size < capacity) {
+            if (mSize < mCapacity) {
                 addFirst(node);
             } else {
-                mMap.remove(tail.key);
-                remove(tail);
+                mMap.remove(mTailNode.key);
+                remove(mTailNode);
                 addFirst(node);
             }
         }
     }
 
     private void addFirst(Node<T> newNode) {
-        final Node<T> node = head;
+        final Node<T> node = mHeadNode;
         newNode.prev = null;
         newNode.next = node;
 
-        head = newNode;
+        mHeadNode = newNode;
         if (node == null) {
-            tail = newNode;
+            mTailNode = newNode;
         } else {
             node.prev = newNode;
         }
-        size++;
+        mSize++;
     }
 
     private void remove(Node<T> removeNode) {
-        if (size == 0) {
+        if (mSize == 0) {
             return;
         }
 
-        if (head == removeNode) {
+        if (mHeadNode == removeNode) {
 
-            if (head.next != null) {
-                head.next.prev = null;
-                head = head.next;
+            if (mHeadNode.next != null) {
+                mHeadNode.next.prev = null;
+                mHeadNode = mHeadNode.next;
             } else {
-                head = null;
+                mHeadNode = null;
+                mTailNode = null;
             }
+        } else if (mTailNode == removeNode) {
 
-        } else if (tail == removeNode) {
-
-            if (tail.prev != null) {
-                tail.prev.next = null;
-                tail = tail.prev;
+            if (mTailNode.prev != null) {
+                mTailNode.prev.next = null;
+                mTailNode = mTailNode.prev;
             } else {
-                tail = null;
+                mTailNode = null;
+                mHeadNode = null;
             }
-
         } else {
+
             removeNode.prev.next = removeNode.next;
             removeNode.next.prev = removeNode.prev;
         }
-        size--;
+        mSize--;
     }
 }

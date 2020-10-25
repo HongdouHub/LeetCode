@@ -33,11 +33,13 @@ public class DeleteBST {
                 .setParameterTypes(new Class[]{TreeNode.class, int.class})
                 .build();
 
+        System.out.println(String.format("-------------%s------------", methodName));
         TreeNode treeNode = generate(5, 3, 6, 2, 4, null, 7);
         print(treeNode);
         print((TreeNode) builder.invoke(treeNode, 3));
         print((TreeNode) builder.invoke(treeNode, 5));
         print((TreeNode) builder.invoke(treeNode, 8));
+        System.out.println("----------------------------------------\n");
     }
 
     /**
@@ -51,7 +53,7 @@ public class DeleteBST {
 
         TreeNode removeNode = getNode(root, key);
         if (removeNode == null) {
-            return null;
+            return root;
         }
 
         // 前驱节点

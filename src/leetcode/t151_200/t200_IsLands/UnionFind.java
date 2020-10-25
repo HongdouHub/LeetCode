@@ -33,13 +33,14 @@ public class UnionFind implements INumIslands {
         for (int i = 0; i < len1; i++) {
             for (int j = 0; j < len2; j++) {
                 int currentIndex = i * len2 + j;
-                if (grid[i][j] == '1') {
-
+                if (grid[i][j] == '1') { // 陆地
+                    // 将 currentIndex 连接到 (x, y)下，那么相连的陆地最终是同一个值
                     union(unionFind, grid, currentIndex, i - 1, j, len1, len2);
                     union(unionFind, grid, currentIndex, i + 1, j, len1, len2);
                     union(unionFind, grid, currentIndex, i, j - 1, len1, len2);
                     union(unionFind, grid, currentIndex, i, j + 1, len1, len2);
-                } else {
+                } else { // 水
+                    // 将 currentIndex 连接到 dummy
                     unionFind.union(currentIndex, dummy);
                 }
             }

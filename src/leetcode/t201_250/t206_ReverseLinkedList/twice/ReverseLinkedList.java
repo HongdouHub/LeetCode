@@ -1,7 +1,11 @@
 package leetcode.t201_250.t206_ReverseLinkedList.twice;
 
 /**
- * 反转链表： 双向链表
+ * 反转链表 - 双向链表
+ *
+ * 示例:
+ *      输入: 1->2->3->4->5->NULL
+ *      输出: 5->4->3->2->1->NULL
  */
 public class ReverseLinkedList {
 
@@ -42,8 +46,8 @@ public class ReverseLinkedList {
      */
     private static <T> Node<T> reverse(Node<T> head) {
         Node<T> node = head;
-        Node<T> next = null;
         Node<T> prev = null;
+        Node<T> next = null;
         Node<T> temp = null;
 
         while (node != null) {

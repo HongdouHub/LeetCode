@@ -1,24 +1,44 @@
 package leetcode.t251_300.t300_LongestIncreasingSequence;
 
+import leetcode.preparation.MethodBuilder;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static utils.ConsoleUtils.println;
+
 /**
  * 300. 最长上升子序列
+ *
+ * 给定一个无序的整数数组，找到其中最长上升子序列的长度。
+ *
+ * 示例:
+ *      输入: [10,9,2,5,3,7,101,18]
+ *      输出: 4
+ *      解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。
  */
+@SuppressWarnings("all")
 public class LongestIncreasingSequence {
 
     public static void main(String[] args) {
-        System.out.println(lengthOfLIS1(new int[] {10, 9, 2, 5, 3, 7, 101, 18, 20}));
-        System.out.println(lengthOfLIS1(new int[] {1, 3, 6, 7, 9, 4, 10, 5, 6}));
+        test("lengthOfLIS1");
+        test("lengthOfLIS2");
+    }
 
-        System.out.println(lengthOfLIS1(new int[] {10, 9, 2, 5, 3, 7, 101, 18, 20}));
-        System.out.println(lengthOfLIS2(new int[] {10, 9, 2, 5, 3, 7, 101, 18, 20}));
+    private static void test(String methodName) {
+        MethodBuilder builder = new MethodBuilder.Builder()
+                .setClazz(LongestIncreasingSequence.class)
+                .setMethodName(methodName)
+                .setParameterTypes(int[].class)
+                .build();
 
-
-        System.out.println(lengthOfLIS1(new int[] {3, 1000, 2000, 4}));
-        System.out.println(lengthOfLIS2(new int[] {3, 1000, 2000, 4}));
+        System.out.println(String.format("-------------%s------------", methodName));
+        println(builder.invoke(new int[] {10, 9, 2, 5, 3, 7, 101, 18, 20}));    // 5
+        println(builder.invoke(new int[] {1, 3, 6, 7, 9, 4, 10, 5, 6}));        // 6
+        println(builder.invoke(new int[] {10, 9, 2, 5, 3, 7, 101, 18, 20}));    // 5
+        println(builder.invoke(new int[] {3, 1000, 2000, 4}));                  // 3
+        System.out.println("----------------------------------------\n");
     }
 
     /**
@@ -55,6 +75,7 @@ public class LongestIncreasingSequence {
     /**
      * 二分查找
      *
+     *
      * 时间复杂度：O(N·logN)
      * 空间复杂度：O(n)
      */
@@ -73,7 +94,7 @@ public class LongestIncreasingSequence {
             right = result;
 
             while(left < right) {
-                middle = (left + right) >> 1;
+                middle = left + (right - left) / 2;
 
                 if (tails[middle] < num) {
                     left = middle + 1;
@@ -82,6 +103,7 @@ public class LongestIncreasingSequence {
                 }
             }
             tails[left] = num;
+//            System.out.println(GsonUtil.array2Json(Arrays.asList(tails)));
 
             if(result == right) {
                 result++;

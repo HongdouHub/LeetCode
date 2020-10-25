@@ -1,16 +1,34 @@
 package leetcode.t201_250.t212_FindWords;
 
+import leetcode.preparation.trie.Trie;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 /**
- * 单词搜索 II
+ * 212. 单词搜索 II
+ *
+ * 给定一个二维网格 board 和一个字典中的单词列表 words，
+ * 找出所有同时在二维网格和字典中出现的单词。
+ *
+ * 单词必须按照字母顺序，通过相邻的单元格内的字母构成，
+ * 其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。
+ * 同一个单元格内的字母在一个单词中不允许被重复使用。
+ *
+ * 示例:
+ *      输入:
+ *          words = ["oath","pea","eat","rain"] and board =
+ *          [
+ *            ['o','a','a','n'],
+ *            ['e','t','a','e'],
+ *            ['i','h','k','r'],
+ *            ['i','f','l','v']
+ *          ]
+ *      输出: ["eat","oath"]
  */
 public class FindWords {
-
-    private static Set<String> result = new HashSet<>();
 
     public static void main(String[] args) {
         char[][] board = new char[][]{
@@ -25,7 +43,7 @@ public class FindWords {
         printData(data);
     }
 
-    public static List<String> findWords(char[][] board, String[] words) {
+    private static List<String> findWords(char[][] board, String[] words) {
         if (board == null || words == null) {
             return new ArrayList<>();
         }
@@ -38,31 +56,41 @@ public class FindWords {
         int m = board.length;
         int n = board[0].length;
         boolean[][] visited = new boolean[m][n];
+        Set<String> result = new HashSet<>();
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                dfs(board, visited, "", i, j, trie);
+                dfs(board, trie, i, j, visited, "", result);
             }
         }
         return new ArrayList<String>(result);
     }
 
-    private static void dfs(char[][] board, boolean[][] visited, String str, int row, int col, Trie trie) {
-        if (row < 0 || row >= board.length || col < 0 || col >= board[0].length) return;
-        if (visited[row][col]) return;
+    private static void dfs(char[][] board, Trie trie, int row, int col,
+                            boolean[][] visited, String path, Set<String> result) {
 
-        str += board[row][col];
-        if (!trie.startWith(str)) return;
+        if (row < 0 || row >= board.length ||
+                col < 0 || col >= board[0].length) {
+            return;
+        }
+        if (visited[row][col]) {
+            return;
+        }
 
-        if (trie.search(str)) {
-            result.add(str);
+        path += board[row][col];
+        if (!trie.startsWith(path)) {
+            return;
+        }
+
+        if (trie.search(path)) {
+            result.add(path);
         }
 
         visited[row][col] = true;
-        dfs(board, visited, str, row - 1, col, trie);
-        dfs(board, visited, str, row + 1, col, trie);
-        dfs(board, visited, str, row, col - 1, trie);
-        dfs(board, visited, str, row, col + 1, trie);
+        dfs(board, trie, row - 1, col, visited, path, result);
+        dfs(board, trie, row + 1, col, visited, path, result);
+        dfs(board, trie, row, col - 1, visited, path, result);
+        dfs(board, trie, row, col + 1, visited, path, result);
         visited[row][col] = false;
     }
 

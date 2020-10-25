@@ -1,10 +1,16 @@
 package leetcode.t201_250.t239_MaxSlidingWindow;
 
+import leetcode.preparation.MethodBuilder;
+import leetcode.preparation.treenode.PrepareTreeNode;
+import leetcode.preparation.treenode.TreeNode;
+import leetcode.t201_250.t235_LowestCommonAncestor.BinarySearchTree;
 import utils.GsonUtil;
 
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
+
+import static utils.ConsoleUtils.println;
 
 /**
  * 239. 滑动窗口最大值
@@ -17,14 +23,28 @@ import java.util.LinkedList;
 public class MaxSlidingWindow {
 
     public static void main(String[] args) {
-//        int[] nums = new int[] {1, -1};
-//        int k = 1;
-//        int[] nums = new int[] {1, 3, -1, -3, 5, 3, 6, 7};
-//        int k = 3;
+        test("maxSlidingWindow1");
+        test("maxSlidingWindow2");
+    }
 
-        print(maxSlidingWindow1(new int[] {1, 3, 1, 2, 0, 5}, 3));
-//        print(maxSlidingWindow2(new int[] {1, 3, 1, 2, 0, 5}, 3));
-        print(maxSlidingWindow2(new int[] {10000, 10001, 10002, 10003, 10004}, 3));
+    private static void test(String methodName) {
+        MethodBuilder builder = new MethodBuilder.Builder()
+                .setClazz(MaxSlidingWindow.class)
+                .setMethodName(methodName)
+                .setParameterTypes(int[].class, int.class)
+                .build();
+
+        System.out.println(String.format("-------------%s------------", methodName));
+
+        print((int[]) builder.invoke(new int[] {1, -1}, 1));                            // [1,-1]
+        print((int[]) builder.invoke(new int[] {1, 3, -1, -3, 5, 3, 6, 7}, 3));         // [3,3,5,5,6,7]
+        print((int[]) builder.invoke(new int[] {1, 3, 1, 2, 0, 5}, 3));                 // [3,3,2,5]
+        print((int[]) builder.invoke(new int[] {10000, 10001, 10002, 10003, 10004}, 3));// [10002,10003,10004]
+        System.out.println("----------------------------------------\n");
+    }
+
+    private static void print(int[] result) {
+        System.out.println(GsonUtil.array2Json(Arrays.asList(result)));
     }
 
     /**
@@ -74,7 +94,7 @@ public class MaxSlidingWindow {
                 deque.pollLast();
             }
 
-            deque.offer(i);
+            deque.offerLast(i);
 //            deque.offerFirst();
 //            deque.offerLast();
 
@@ -88,9 +108,5 @@ public class MaxSlidingWindow {
             }
         }
         return result;
-    }
-
-    private static void print(int[] result) {
-        System.out.println(GsonUtil.array2Json(Arrays.asList(result)));
     }
 }
