@@ -28,13 +28,13 @@ public class FloodFillBFS implements INumIslands {
 
         for (int i = 0; i < maxX; i++) {
             for (int j = 0; j < maxY; j++) {
-                numIslands += floodFillBFS(grid, i, j, visited, maxX, maxY);
+                numIslands += bfs(grid, i, j, visited, maxX, maxY);
             }
         }
         return numIslands;
     }
 
-    private static int floodFillBFS(char[][] grid, int row, int col, Set<Point> visited, int maxX, int maxY) {
+    private static int bfs(char[][] grid, int row, int col, Set<Point> visited, int maxX, int maxY) {
         if (!isValid(grid, row, col, visited, maxX, maxY)) {
             return 0;
         }

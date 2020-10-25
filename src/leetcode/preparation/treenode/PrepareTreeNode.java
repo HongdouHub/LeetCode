@@ -59,27 +59,68 @@ public class PrepareTreeNode {
         int level = 0;
         double current = 0;
 
+        int maxLevel = getMaxDepth(treeNode);
+        int maxLevelCount = ((int) Math.pow(2, maxLevel) - 1) * 6 + 4;
+
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(treeNode);
 
         while (!queue.isEmpty()) {
-            TreeNode poll = queue.poll();
+            int size = queue.size();
 
-            if (poll == null) {
-                System.out.print("null, ");
-            } else {
-                System.out.print(poll.val + ", ");
-                queue.offer(poll.left);
-                queue.offer(poll.right);
+            for (int i = 0; i < size; i++) {
+                TreeNode poll = queue.poll();
+                current++;
+
+                if (level != maxLevel) {
+                    if (i == 0) {
+                        if ((size & 1) == 1) { // 奇数（第一行）
+                            printSpace((maxLevelCount - 4) / 2);
+                        } else { // 偶数个
+                            printSpace((maxLevelCount - ((size - 1) * 6 + 4)) / 2);
+                        }
+                    }
+                }
+
+
+                if (poll == null) {
+                    System.out.print("null, ");
+                } else {
+                    String format = " %2d " + ((i == size - 1) ? "" : ", ");
+                    System.out.print(String.format(format, poll.val));
+                    queue.offer(poll.left);
+                    queue.offer(poll.right);
+                }
             }
 
-            if ((++current) >= Math.pow(2, level)) {
-                level++;
-                current = 0;
-                System.out.println();
+            // 补充上一层为null节点造成本层null打印的缺失
+            double currentLevelCount = Math.pow(2, level);
+            if (current < currentLevelCount) {
+                StringBuilder builder = new StringBuilder();
+                for (double i = 0; i < currentLevelCount - current; i++) {
+                    builder.append("null, ");
+                }
+                System.out.print(builder.substring(0, builder.length() - 2));
             }
+
+            level++;
+            current = 0;
+            System.out.println();
         }
-        System.out.println();
-        System.out.println("-----------------");
+        System.out.println("\n-----------------");
+    }
+
+    private static int getMaxDepth(TreeNode treeNode) {
+        if (treeNode == null) {
+            return 0;
+        }
+
+        return 1 + Math.max(getMaxDepth(treeNode.left), getMaxDepth(treeNode.right));
+    }
+
+    private static void printSpace(int size) {
+        for (int i = 0; i < size; i++) {
+            System.out.print(" ");
+        }
     }
 }

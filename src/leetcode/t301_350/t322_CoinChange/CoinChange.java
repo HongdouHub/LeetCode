@@ -8,16 +8,18 @@ import java.util.Arrays;
  * 给定不同面额的硬币 coins 和一个总金额 amount。
  * 编写一个函数来计算可以凑成总金额所需的最少的硬币个数。
  * 如果没有任何一种硬币组合能组成总金额，返回 -1。
+ *
+ * 你可以认为每种硬币的数量是无限的。
  */
 @SuppressWarnings("all")
 public class CoinChange {
 
     public static void main(String[] args) {
-        System.out.println(solveByDynamicProgramming(new int[] {1, 2, 5}, 11)); // 3
-        System.out.println(solveByDynamicProgramming(new int[] {2}, 3));        // -1
+        System.out.println(coinChange(new int[] {1, 2, 5}, 11)); // 3
+        System.out.println(coinChange(new int[] {2}, 3));        // -1
     }
 
-    private static int solveByDynamicProgramming(int[] coins, int amount) {
+    private static int coinChange(int[] coins, int amount) {
         int length;
         if (coins == null || (length = coins.length) == 0) {
             return -1;
@@ -32,10 +34,7 @@ public class CoinChange {
         Arrays.fill(dp, maxValue);
         dp[0] = 0;
 
-//        for (int i = 1; i < maxValue; i++) dp[i] = maxValue;
-
         // 3. 思考状态转移方程
-
         // 遍历总金额
         for (int i = 0; i < maxValue; i++) {
 

@@ -1,11 +1,6 @@
 package leetcode.t201_250.t204_CountPrimes;
 
-import utils.GsonUtil;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * 204. 计数质数
@@ -26,30 +21,6 @@ public class CountPrimes {
 
         System.out.println(countPrimes1(3));
         System.out.println(countPrimes2(3));
-
-        List<MyBean> a = new ArrayList<MyBean>();
-        MyBean b = new MyBean(50);
-        a.add(new MyBean(50));
-        a.add(new MyBean(50));
-        a.add(new MyBean(50));
-        a.add(new MyBean(50));
-        System.out.println(GsonUtil.array2Json(a));
-        System.out.println("-----");
-        Collections.fill(a, new MyBean(10));
-        System.out.println(GsonUtil.array2Json(a));
-        System.out.println("-----");
-
-        MyBean myBean = a.get(0);
-        myBean.value = 20;
-        System.out.println(GsonUtil.array2Json(a));
-    }
-
-    private static class MyBean {
-        int value;
-
-        public MyBean(int value) {
-            this.value = value;
-        }
     }
 
     /**
@@ -74,13 +45,9 @@ public class CountPrimes {
 
     // 判断整数 n 是否是素数
     private static boolean isPrime(int n) {
-//        for (int i = 2; i < n; i++) {
-//            // 有其他整除因子
-//            if (n % i == 0) {
-//                return false;
-//            }
-//        }
 
+        // 优化计算： i < sqrt(n)
+//        for (int i = 2; i < n; i++) {
         for (int i = 2; i * i <= n; i++) {
             // 有其他整除因子
             if (n % i == 0) {
@@ -93,7 +60,7 @@ public class CountPrimes {
     /**
      * 高效算法 - Sieve of Eratosthenes
      *
-     * 时间复杂度：O(N * loglogN)
+     * 时间复杂度：O(N * log N)
      * 空间复杂度：O(1)
      */
     private static int countPrimes2(int n) {

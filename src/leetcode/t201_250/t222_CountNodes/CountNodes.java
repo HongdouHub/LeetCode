@@ -52,15 +52,15 @@ public class CountNodes {
 
         int left = 0;
         int right = (int) (Math.pow(2, depth) - 1);
-        int pivot;
+        int middle;
 
         while (left <= right) {
-            pivot = (left + right) >> 1;
+            middle = left + (right - left) / 2;
 
-            if (isNodeExist(root, pivot, depth)) {
-                left = pivot + 1;
+            if (isNodeExist(root, middle, depth)) {
+                left = middle + 1;
             } else {
-                right = pivot - 1;
+                right = middle - 1;
             }
         }
         return (int) (Math.pow(2, depth) - 1 + left);

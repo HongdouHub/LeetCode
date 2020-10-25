@@ -7,12 +7,7 @@ package leetcode.t151_200.t152_MaxProductSubarray;
  */
 public class MaxProductSubarray2 {
 
-    public static void main(String[] args) {
-        int[] raw = new int[]{-1, -2, -9, -6};
-        System.out.println(getMaxValue(raw));
-    }
-
-    private static int getMaxValue(int[] nums) {
+    public static int maxProduct(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
 
         int[][] dp = new int[2][2];

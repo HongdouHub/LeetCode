@@ -68,7 +68,9 @@ public class CanPartition {
         }
 
         // 3. 思考状态转移方程
+        // 遍历物品列表
         for (int i = 1; i < length; i++) {
+            // 遍历目标值（背包）大小
             for (int j = 0; j <= target; j++) {
 
                 if (nums[i] == j) {

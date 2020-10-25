@@ -5,6 +5,9 @@ import leetcode.t201_250.t225_MyStack.MyStack;
 import java.util.Deque;
 import java.util.LinkedList;
 
+/**
+ * 双端队列
+ */
 public class MySingleStack3<E> implements MyStack<E> {
 
     /**
@@ -26,7 +29,7 @@ public class MySingleStack3<E> implements MyStack<E> {
 
     @Override
     public void push(E value) {
-        deque.offer(value);
+        deque.offerLast(value);
     }
 
     @Override

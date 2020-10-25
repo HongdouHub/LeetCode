@@ -33,6 +33,8 @@ public class Solution {
 
         while (head != null) {
             count++;
+
+            // 注意： random.nextInt(1) == 0
             if (random.nextInt(count) == 0) {
                 val = head.val;
             }

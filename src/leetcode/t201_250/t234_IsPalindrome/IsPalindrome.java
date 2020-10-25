@@ -19,11 +19,11 @@ import static leetcode.preparation.linkednode.PrepareListNode.reverseList;
 public class IsPalindrome {
 
     public static void main(String[] args) {
-        System.out.println(isPalindrome1(generate(new Integer[] {1, 2, 2, 1})));
-        System.out.println(isPalindrome2(generate(new Integer[] {1, 2, 2, 1})));
+        System.out.println(isPalindrome1(generate(1, 2, 2, 1)));
+        System.out.println(isPalindrome2(generate(1, 2, 2, 1)));
 
-        System.out.println(isPalindrome1(generate(new Integer[] {1, 2})));
-        System.out.println(isPalindrome2(generate(new Integer[] {1, 2})));
+        System.out.println(isPalindrome1(generate(1, 2)));
+        System.out.println(isPalindrome2(generate(1, 2)));
     }
 
     /**

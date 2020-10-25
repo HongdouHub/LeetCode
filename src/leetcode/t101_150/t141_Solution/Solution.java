@@ -19,9 +19,9 @@ public class Solution {
 
     public static void main(String[] args) {
         System.out.println(hasCycle1(generateCycle(new Integer[]{3, 2, 0, -4, 2})));
-        System.out.println(hasCycle2(generateCycle(new Integer[]{3, 2, 0, -4, 2})));
-
         System.out.println(hasCycle1(generateCycle(new Integer[]{1, 2})));
+
+        System.out.println(hasCycle2(generateCycle(new Integer[]{3, 2, 0, -4, 2})));
         System.out.println(hasCycle2(generateCycle(new Integer[]{1, 2})));
     }
 

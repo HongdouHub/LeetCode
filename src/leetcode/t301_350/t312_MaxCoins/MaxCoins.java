@@ -37,17 +37,17 @@ public class MaxCoins {
      */
     private static int maxCoins1(int[] nums) {
         int length = nums.length;
-        int[] temp = new int[length + 2];
+        int[] value = new int[length + 2];
         int[][] result = new int[length + 2][length + 2];
 
-        System.arraycopy(nums, 0, temp, 1, length);
-        temp[0] = temp[length + 1] = 1;
+        System.arraycopy(nums, 0, value, 1, length);
+        value[0] = value[length + 1] = 1;
 
         for (int i = 0; i < length + 2; i++) {
             Arrays.fill(result[i], -1);
         }
 
-        return solve(0, length + 1, temp, result);
+        return solve(0, length + 1, value, result);
     }
 
     /**
@@ -101,9 +101,6 @@ public class MaxCoins {
         int[][] dp = new int[length + 2][length + 2];
 
         // 2. 初始化状态
-//        for (int i = 0; i < length + 2; i++) {
-//            Arrays.fill(dp[i], -1);
-//        }
 
         // 3. 思考状态转移方程
         for (int i = length - 1; i >= 0; i--) {

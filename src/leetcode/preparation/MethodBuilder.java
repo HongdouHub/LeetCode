@@ -55,7 +55,7 @@ public class MethodBuilder {
             return this;
         }
 
-        public Builder setParameterTypes(Class<?>[] parameterTypes) {
+        public Builder setParameterTypes(Class... parameterTypes) {
             this.parameterTypes = parameterTypes;
             return this;
         }

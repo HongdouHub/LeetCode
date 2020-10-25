@@ -5,6 +5,9 @@ import leetcode.t201_250.t225_MyStack.MyStack;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * 头节点 + 普通队列
+ */
 public class MySingleStack2<E> implements MyStack<E> {
 
     private Queue<E> mQueue;

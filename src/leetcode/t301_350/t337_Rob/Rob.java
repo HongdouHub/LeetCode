@@ -17,8 +17,8 @@ import static leetcode.preparation.treenode.PrepareTreeNode.generate;
 public class Rob {
 
     public static void main(String[] args) {
-        System.out.println(rob(generate(new Integer[]{3, 2, 3, null, 3, null, 1})));    // 7
-        System.out.println(rob(generate(new Integer[]{3, 4, 5, 1, 3, null, 1})));       // 9
+        System.out.println(rob(generate(3, 2, 3, null, 3, null, 1)));    // 7
+        System.out.println(rob(generate(3, 4, 5, 1, 3, null, 1)));       // 9
     }
 
     /**

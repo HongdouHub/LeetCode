@@ -1,6 +1,7 @@
 package leetcode.t351_400.t355_Twitter;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 355. 设计推特
@@ -36,7 +37,9 @@ public class Twitter implements ITwitter {
     /**
      * 全局使用的时间戳字段，用户每发布一条推文之前 + 1
      */
-    private static volatile int mTimestamp = 0;
+    private static volatile AtomicInteger mTimestamp = new AtomicInteger(0);
+
+
 
     public Twitter() {
         mTwitterMap = new HashMap<>();
@@ -52,15 +55,15 @@ public class Twitter implements ITwitter {
 
     @Override
     public void postTweet(int userId, int tweetId) {
-        mTimestamp++;
+        mTimestamp.addAndGet(1);
 
         if (mTwitterMap.containsKey(userId)) {
             Tweet old = mTwitterMap.get(userId);
-            Tweet tweet = new Tweet(tweetId, mTimestamp);
+            Tweet tweet = new Tweet(tweetId, mTimestamp.get());
             tweet.next = old;
             mTwitterMap.put(userId, tweet);
         } else {
-            mTwitterMap.put(userId, new Tweet(tweetId, mTimestamp));
+            mTwitterMap.put(userId, new Tweet(tweetId, mTimestamp.get()));
         }
     }
 
@@ -84,8 +87,8 @@ public class Twitter implements ITwitter {
         }
 
         List<Integer> result = new ArrayList<>(10);
-        int count = 0;
 
+        int count = 0;
         while (!mMaxHeap.isEmpty() && count < 10) {
             Tweet poll = mMaxHeap.poll();
             result.add(poll.id);
@@ -125,18 +128,21 @@ public class Twitter implements ITwitter {
             set.remove(followeeId);
         }
     }
-}
 
-class Tweet {
-    /** 推文 id **/
-    public int id;
-    /** 发推文的时间戳 **/
-    public int timestamp;
-    /** 下一指针 **/
-    public Tweet next;
+    /**
+     * 推文信息Bean
+     */
+    class Tweet {
+        /** 推文 id **/
+        int id;
+        /** 发推文的时间戳 **/
+        int timestamp;
+        /** 下一指针 **/
+        Tweet next;
 
-    public Tweet(int id, int timestamp) {
-        this.id = id;
-        this.timestamp = timestamp;
+        Tweet(int id, int timestamp) {
+            this.id = id;
+            this.timestamp = timestamp;
+        }
     }
 }

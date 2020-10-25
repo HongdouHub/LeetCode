@@ -98,11 +98,10 @@ public class Calculate {
             return 0;
         }
 
-        return calculate2(s, new int[1]);
+        return calculate2(s, new int[1], length);
     }
 
-    private static int calculate2(String s, int[] i) {
-        int length = s.length();
+    private static int calculate2(String s, int[] i, int length) {
         Stack<Integer> stack = new Stack<Integer>();
         int num = 0;
         char sign = '+';
@@ -119,7 +118,7 @@ public class Calculate {
             // 2. 再判断小括号
             if (c == '(') {
                 i[0] += 1;
-                num = calculate2(s, i);
+                num = calculate2(s, i, length);
             }
 
             // 3. 再判断操作符 + -

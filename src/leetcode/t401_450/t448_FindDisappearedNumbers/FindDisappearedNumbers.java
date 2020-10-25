@@ -37,7 +37,9 @@ public class FindDisappearedNumbers {
                 .setParameterTypes(new Class[]{int[].class})
                 .build();
 
+        System.out.println(String.format("-------------%s------------", methodName));
         println((List) builder.invoke(new int[]{4, 3, 2, 7, 8, 2, 3, 1}));
+        System.out.println("----------------------------------------\n");
     }
 
     /**
