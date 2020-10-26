@@ -20,7 +20,7 @@ import static leetcode.preparation.treenode.PrepareTreeNode.print;
 public class InsertIntoBST {
 
     public static void main(String[] args) {
-        print(insertIntoBST(generate(new Integer[] {4, 2, 7, 1, 3}), 5));
+        print(insertIntoBST(generate(4, 2, 7, 1, 3), 5));
     }
 
     private static TreeNode insertIntoBST(TreeNode root, int val) {

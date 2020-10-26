@@ -17,7 +17,7 @@ import static leetcode.preparation.treenode.PrepareTreeNode.print;
 public class SearchBST {
 
     public static void main(String[] args) {
-        print(searchBST(generate(new Integer[] {4, 2, 7, 1, 3}), 2));
+        print(searchBST(generate(4, 2, 7, 1, 3), 2));
     }
 
     private static TreeNode searchBST(TreeNode root, int val) {
