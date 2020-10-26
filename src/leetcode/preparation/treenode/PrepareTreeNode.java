@@ -33,8 +33,8 @@ public class PrepareTreeNode {
         if (array == null) return null;
         TreeNode result = null;
 
-        for (int i = 0; i < array.length; i++) {
-            result = insertIntoBST(result, array[i]);
+        for (Integer integer : array) {
+            result = insertIntoBST(result, integer);
         }
         return result;
     }

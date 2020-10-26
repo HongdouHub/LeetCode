@@ -27,7 +27,7 @@ public class ShipWithinDays {
         int low = 0, high = Integer.MAX_VALUE;
 
         while (low < high) {
-            int middle = (low + high) >> 1;
+            int middle = low + (high - low) / 2;
 
             if (canShip(weights, D, middle)) {
                 high = middle;

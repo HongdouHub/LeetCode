@@ -32,7 +32,7 @@ public class CheckInclusion {
         MethodBuilder build = new MethodBuilder.Builder()
                 .setClazz(CheckInclusion.class)
                 .setMethodName(methodName)
-                .setParameterTypes(new Class[]{String.class, String.class})
+                .setParameterTypes(String.class, String.class)
                 .build();
 
         System.out.println(String.format("-------------%s------------", methodName));

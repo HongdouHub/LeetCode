@@ -48,21 +48,19 @@ public class UnionFind implements INumIslands {
 
 //        unionFind.print();
 
-        int count = 0;
         Set<Integer> set = new HashSet<>();
 
         for (int i = 0; i < len1; i++) {
             for (int j = 0; j < len2; j++) {
                 int root = unionFind.findRoot(i * len2 + j);
-                if (root != dummy && !set.contains(root)) {
+                if (root != dummy) {
                     set.add(root);
-                    count++;
                 }
             }
         }
 
         // 去除dummy水的集合
-        return count;
+        return set.size();
     }
 
     private void union(IUnionFind unionFind, char[][] grid, int currentIndex,

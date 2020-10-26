@@ -26,6 +26,12 @@ public class LongestPalindromeSubseq {
 
     }
 
+    /**
+     * 动态规划
+     *
+     * 时间复杂度：O(n^2)
+     * 空间复杂度：O(n^2)
+     */
     private static int longestPalindromeSubseq(String s) {
         int length = s.length();
 
@@ -57,6 +63,7 @@ public class LongestPalindromeSubseq {
 //                PrepareArray.print(dp);
             }
         }
+//        PrepareArray.print(dp);
         return dp[0][length - 1];
     }
 }

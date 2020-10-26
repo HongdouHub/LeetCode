@@ -27,13 +27,13 @@ public class SubArraySum {
     private static void test(String methodName) {
         MethodBuilder build = new MethodBuilder.Builder()
                 .setClazz(SubArraySum.class)
-                .setParameterTypes(new Class[]{int[].class, int.class})
+                .setParameterTypes(int[].class, int.class)
                 .setMethodName(methodName)
                 .build();
 
         System.out.println(String.format("------------%s-----------", methodName));
-        System.out.println(build.invoke(new int[] {1, 1, 1}, 2));
-        System.out.println(build.invoke(new int[] {28,54,7,-70,22,65,-6}, 100));
+        System.out.println(build.invoke(new int[] {1, 1, 1}, 2));               // 2
+        System.out.println(build.invoke(new int[] {28,54,7,-70,22,65,-6}, 100));// 1
         System.out.println("-----------------------------------\n");
     }
 
