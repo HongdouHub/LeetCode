@@ -19,13 +19,15 @@ package leetcode.t401_450.t416_CanPartition;
 public class CanPartition {
 
     public static void main(String[] args) {
-        System.out.println(canPartition1(new int[] {1, 5, 11, 5}));
-        System.out.println(canPartition1(new int[] {1, 2, 3, 5}));
-        System.out.println(canPartition1(new int[] {2, 2, 3, 5}));
+        System.out.println(canPartition1(new int[] {1, 5, 11, 5})); // true
+        System.out.println(canPartition1(new int[] {1, 2, 3, 5}));  // false
+        System.out.println(canPartition1(new int[] {2, 2, 3, 5}));  // false
+        System.out.println(canPartition1(new int[] {9,1,2,4,10}));  // true
 
-        System.out.println(canPartition2(new int[] {1, 5, 11, 5}));
-        System.out.println(canPartition2(new int[] {1, 2, 3, 5}));
-        System.out.println(canPartition2(new int[] {2, 2, 3, 5}));
+        System.out.println(canPartition2(new int[] {1, 5, 11, 5})); // true
+        System.out.println(canPartition2(new int[] {1, 2, 3, 5}));  // false
+        System.out.println(canPartition2(new int[] {2, 2, 3, 5}));  // false
+        System.out.println(canPartition2(new int[] {9,1,2,4,10}));  // true
     }
 
     /**
@@ -62,9 +64,10 @@ public class CanPartition {
 
         // 初始化成为 true 虽然不符合状态定义，但是从状态转移来说是完全可以的
         dp[0][0] = true;
-
-        if (nums[0] <= target) {
-            dp[0][nums[0]] = true;
+        for (int i = 0; i < length; i++) {
+            if (nums[i] <= target) {
+                dp[i][nums[i]] = true;
+            }
         }
 
         // 3. 思考状态转移方程
@@ -72,12 +75,6 @@ public class CanPartition {
         for (int i = 1; i < length; i++) {
             // 遍历目标值（背包）大小
             for (int j = 0; j <= target; j++) {
-
-                if (nums[i] == j) {
-                    dp[i][j] = true;
-                    continue;
-                }
-
                 if (nums[i] < j) {
                     dp[i][j] = dp[i - 1][j] || dp[i - 1][j - nums[i]];
                 }

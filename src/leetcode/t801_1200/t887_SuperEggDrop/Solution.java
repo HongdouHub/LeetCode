@@ -58,12 +58,12 @@ public class Solution {
                 .build();
 
         System.out.println(String.format("----------%s---------", clazz.getSimpleName()));
-        System.out.println(builder.invoke(1, 2)); // 2
-        System.out.println(builder.invoke(2, 6)); // 3
-        System.out.println(builder.invoke(3, 14));// 4
-        System.out.println(builder.invoke(2, 100));// 14
-        System.out.println(builder.invoke(300, 100));// 7
-        System.out.println(builder.invoke(7, 5000));// 13
+        System.out.println(builder.invoke(1, 2));       // 2
+        System.out.println(builder.invoke(2, 6));       // 3
+        System.out.println(builder.invoke(3, 14));      // 4
+        System.out.println(builder.invoke(2, 100));     // 14
+        System.out.println(builder.invoke(300, 100));   // 7
+        System.out.println(builder.invoke(7, 5000));    // 13
         System.out.println("--------------------------------\n");
     }
 
